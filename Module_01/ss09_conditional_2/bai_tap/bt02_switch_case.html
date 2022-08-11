@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>switch-case</title>
+    <style>
+        body{
+            width: 80%;
+            margin: 200px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="2"> Ứng dụng tính số ngày trong một tháng: </th>
+        </tr>
+        <tr>
+            <td>
+                <input id="input01" type="text">
+                <button id="songay01" onclick="songnay01()">Tính số ngày</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+             <span id="ketqua01"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="input02" type="text">
+                <button id="songay02" onclick="songnay02()">Tính số ngày</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+             <span id="ketqua02"></span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+<script>
+    function songnay01() {
+        var dayone = document.getElementById("input01").value;
+       switch (dayone) {
+            case '1':
+            case '3':
+            case '5':
+            case '7':
+            case '8':
+            case '10':
+            case '12':
+                document.getElementById("ketqua01").innerHTML = "Tháng "+dayone+" có 31 ngày";
+                break;
+            case '2':
+                document.getElementById("ketqua01").innerHTML = "Tháng "+dayone+" có 28 hoặc 29 ngày";
+                break;
+            case '4':
+            case '6':
+            case '9':
+            case '11':
+                document.getElementById("ketqua01").innerHTML = "Tháng "+dayone+" có 30 ngày";
+                break;
+            default:
+                document.getElementById("ketqua01").innerHTML = "Bạn nhập sai rồi! Mời bạn nhập lại!";
+       }
+    }
+    function songnay02() {
+        var daytwo = document.getElementById("input02").value;
+        switch (daytwo) {
+            case '1':
+            case '3':
+            case '5':
+            case '7':
+            case '8':
+            case '10':
+            case '12':
+                document.getElementById("ketqua02").innerHTML = "Tháng "+daytwo+" có 31 ngày";
+                break;
+            case '2':
+                document.getElementById("ketqua02").innerHTML = "Tháng "+daytwo+" có 28 hoặc 29 ngày";
+                break;
+            case '4':
+            case '6':
+            case '9':
+            case '11':
+                document.getElementById("ketqua02").innerHTML = "Tháng "+daytwo+" có 30 ngày";
+                break;
+            default:
+                document.getElementById("ketqua02").innerHTML = "Bạn nhập sai rồi! Mời bạn nhập lại!";
+        }
+    }
+</script>

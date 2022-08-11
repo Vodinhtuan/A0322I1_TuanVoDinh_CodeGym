@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TruongTanHai</title>
+    <style>
+        table{
+            padding: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+     <table>
+         <tr>
+             <th rowspan="3" style="text-align: right">original string</th>
+         </tr>
+         <tr>
+             <td colspan="2">string normalization</td>
+         </tr>
+         <tr>
+             <td colspan="2"><input type="text" id="enterr" placeholder="Enter the string"></td>
+         </tr>
+         <tr>
+             <td colspan="2" style="text-align: right"><button onclick="normal()">Run</button> </td>
+         </tr>
+     </table>
+</body>
+</html>
+<script>
+    
+    /*function standardized(name) {
+        name = name.trim().toLowerCase();
+        let nameArray = Array.from(name);
+        for (let i = 0; i < nameArray.length -1; i++) {
+            if(nameArray[i] === " " && nameArray[i+1] === " "){
+                for (let j = i+1; j < nameArray.length - 1; j++) {
+                    nameArray[j] = nameArray[j +1];
+                }
+                i--;
+                nameArray.pop();
+            }
+        }
+        nameArray[0] = nameArray[0].toUpperCase();
+        for (let i = 0; i < nameArray.length - 1; i++) {
+            if (nameArray[i] === ' '){
+                nameArray[i+1] = nameArray[i+1].toUpperCase();
+            }
+        }
+        return nameArray.join("");
+    }
+    function maxLength(name) {
+        let arrName = name.split(" ");
+        let maxName = arrName[0];
+        for (let i = 1; i< arrName.length; i++){
+            if (maxName.length < arrName[i].length){
+                maxName = arrName[i];
+            }
+        }
+        return maxName;
+    }
+    let name = prompt("Nhap vao ten: ");
+    alert("Ten ban dau la: "+name+" \n Ten chuan hoa la: "+standardized(name)+
+        '\n Tu co do dai lon nhat la: '+maxLength(standardized(name)));*/
+
+
+
+    //let ten = "tRuong  TaN  HAI";
+    function normal(s) {
+        var s = document.getElementById("enterr").value;
+        arr = s.split(" "); // Tách chuỗi vào mảng theo khoảng trắng
+        var i, kq ="", tmp;
+        for (i = 0;i<arr.length;i++){ // duyệt từ đầu mảng
+            tmp = arr[i].trim().toLowerCase(); //xóa khoảng trắng trước sau từ, chuyển về chữ thường.
+            if (tmp!=""){ // Viết hoa 1 ký tự đầu từ.
+                tmp = tmp.substr(0,1).toUpperCase() +tmp.substr(1);
+                kq +=tmp +" ";
+            }
+        }
+        document.getElementById("enterr").value = kq.trim(); // Xóa ký tự đầu và cuối mảng.
+    }
+</script>

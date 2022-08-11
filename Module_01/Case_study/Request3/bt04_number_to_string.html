@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number to string</title>
+</head>
+<body>
+    <!--<div><input  id="inputtt" type="number" onkeyup="doing()"></div>
+<div><p id="res"></p></div>-->
+</body>
+</html>
+<script>
+    let strNumber = ['khong', 'mot', 'hai', 'ba', 'bon', 'nam', 'sau', 'bay', 'tam', 'chin'];
+    let number = prompt("Nhap vao so muon doc thanh chu: ");
+    let result = '';
+    for (let i=0; i<number.length; i++){
+        result += strNumber[number[i]]+' ';
+    }
+    alert('So nhap vao la: '+ number+ ' So sau khi in thanh chu la: '+result);
+
+    /*function doing() {
+        let words = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
+        let enter_ = document.getElementById('inputtt').value;
+        let str='';
+        for (let i = 0; i < enter_.length; i++) {
+            let index=parseInt(enter_[i]);
+            str+=words[index]+" ";
+        }
+        document.getElementById("res").innerHTML = str
+    }*/
+</script>

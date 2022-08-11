@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prefix sums</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let a = [];
+    let b= [];
+    let temp = 0;
+    let n= parseInt(prompt("Nhap vao do dai mang a: "));
+    for (let i=0; i<=n;i++){
+        a.push(parseInt(prompt("Enter the number")));
+    }
+    for (let i = 0; i < a.length; i++) {
+        temp+= a[i];
+        b[i]=temp;
+    }
+    alert("Mang a la: "+a+"\n"+"Prefix Sums cua a la: "+b);
+
+
+
+
+
+
+
+    /*function prefix_sums(arr) {
+        var new_arr = [];
+        for (var i = 0; i < arr.length; i++) {
+            new_arr[i] = 0;
+            for (var j = 0; j < i + 1; j++) {
+                new_arr[i] += arr[j];
+            }
+        }
+        return new_arr;
+    }
+
+    console.log(prefix_sums([1, 2, 3, 4, 5]));
+
+    console.log(prefix_sums([1, 2, -3, 4, 5]));*/
+</script>

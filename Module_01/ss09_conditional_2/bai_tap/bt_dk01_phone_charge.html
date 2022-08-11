@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone charge</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var price = 25000;
+    var time = parseInt(prompt("Call minutes"));
+    var bill;
+    if (time<50){
+        bill = 600 * time +price;
+        alert("Số tiền bạn phải trả là: "+ bill);
+    } else if (time<200){
+        bill = 400 * time +price;
+        alert("Số tiền bạn phải trả là: "+ bill);
+    } else {
+        bill = 200 * time +price;
+        alert("Số tiền bạn phải trả là: "+ bill);
+    }
+
+</script>

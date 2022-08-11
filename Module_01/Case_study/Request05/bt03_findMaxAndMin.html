@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Max and Min </title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function findMaxAndMin(matrix) {
+        let max = matrix[0][0];
+        let min = matrix[0][0];
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                if (max < matrix[i][j]) {
+                    max = matrix[i][j];
+                }
+                if (min > matrix[i][j]) {
+                    min = matrix[i][j];
+                }
+            }
+        }
+        console.table(matrix);
+        alert('Phan tu lon nhat la: ' + max + '\n Phan tu be nhat la: ' + min);
+    }
+    findMaxAndMin()
+</script>

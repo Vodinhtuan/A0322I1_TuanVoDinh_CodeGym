@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maxfraction</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let numberators = [];
+    let denmoinators = [];
+    let size = parseInt(prompt("Nhap do dai mang cac phan so: "));
+    
+    for (let i = 0; i < size; i++) {
+        numberators.push(parseInt(prompt("Nhap vao tu so: ")));
+        denmoinators.push(parseInt(prompt("Nhap vao mau so: ")));
+    }
+    // 1/2 & 2/3
+    // 3 & 4 => 1/2 < 2/3
+    function maxFraction(numberators, denmoinators) {
+        let maxIndex = 0;
+        for (let i = 1; i < numberators.length; i++) {
+            if (numberators[maxIndex] * denmoinators[i] < numberators[i] * denmoinators[maxIndex]){
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+    alert("Chi so cua phan so lon nhat la: "+maxFraction(numberators,denmoinators));
+
+
+    /*let arrA = [1,2,3];
+    let arrB = [4,5,6];
+    let arrC = [];
+    for(let i = 0;i<arrA.length;i++){
+        arrC.push(arrA[i]/arrB[i]);
+    }
+    console.log(arrC);
+    function Max(arr) {
+        let max = arr[0];
+        for (let i =0;i<arr.length;i++){
+            if(arr[i]>max){
+                max = arr[i];
+            }
+        }
+        alert(arrA[arr.indexOf(max)]+"/"+arrB[arr.indexOf(max)]+" "+"là số lớn nhất, ở vị trí thứ "+arr.indexOf(max));
+    }
+    Max(arrC);*/
+</script>

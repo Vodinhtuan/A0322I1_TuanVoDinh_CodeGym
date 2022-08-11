@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Right triangle</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    const h=5;
+    for(var i=0;i<h;i++)                // Số dòng
+    {
+        for(var j=0;j<=i;j++){
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+    document.write("<br><br>");
+    /*  * * * * *      y=5;j=1,2,3,4,5;
+        * * * *        y=4;j=1,2,3,4;
+        * * *          y=3;j=1,2,3;
+        * *            y=2;j=1,2;
+        *              y=1;j=1;
+        j<=1;     */
+    for (let y=h;y>=1;y--)
+    {
+        for (let j=1;j<=y;j++){
+           document.write("*");
+        }
+        document.write('<br>')
+    }
+    document.write("<br><br>");
+    /*           *      z=5;j=5;
+               * *       z=4;j=4,5;
+             * * *        z=3;j=3,4,5;
+           * * * *         z=2;j=2,3,4,5;
+         * * * * *          z=1;j=1,2,3,4,5;
+        i=n && j=n  && j>h-1    đều in ra *     */
+    for ( i=1;i<=h;i++)
+    {
+        for ( j=i;j<=h;j++)
+        {
+            (i==n || j==n || j>n-1)?document.write("*"):document.write(" ");
+        }document.write('<br>')
+    }
+</script>

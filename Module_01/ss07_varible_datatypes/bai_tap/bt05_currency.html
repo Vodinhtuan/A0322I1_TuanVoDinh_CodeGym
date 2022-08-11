@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency</title>
+    <style>
+        table{
+            text-align: center;
+            padding: 5px ;
+            margin: 200px auto  auto auto;
+            border-collapse: collapse;
+            border:5px
+        }
+        th, td {
+            padding: 5px;
+
+        }
+        button{
+            background-color: rgba(144,116,133,0.96);
+            color: white
+        }
+    </style>
+</head>
+<body>
+        <table>
+        <tr>
+            <th>Amount</th>
+            <th>From Curency</th>
+            <th>To Currency</th>
+        </tr>
+        <tr>
+            <td><input type="number" id="inputcurency" placeholder="Enter the amount " ></td>
+            <td>
+                <select name="" id="from">
+                    <option value="vietnam">VietNam</option>
+                    <option value="american">American</option>
+                </select>
+            </td>
+            <td>
+                <select name="" id="to">
+                    <option value="vietnam">VND</option>
+                    <option value="american">USD</option>
+                </select>
+            </td>
+            <td>
+                <button onclick="dosomething()">Converst</button>
+            </td>
+        </tr>
+            <tr>
+                <td style="color: blue">Result: <span id="ketqua"></span></td>
+            </tr>
+        </table>
+        <br><br>
+</body>
+</html>
+<script>
+
+    function dosomething() {
+        let enter = document.getElementById('inputcurency').value;
+        let from = document.getElementById('from').value;
+        let to = document.getElementById('to').value;
+
+        if (from==to){
+            document.getElementById("ketqua").innerHTML = enter;
+        }else if (from =='vietnam' && to=='american'){
+            document.getElementById("ketqua").innerHTML = enter/24000;
+        }else if (from =='american' && to=='vietnam'){
+            document.getElementById("ketqua").innerHTML = enter*24000;
+        }
+    }
+
+
+
+</script>

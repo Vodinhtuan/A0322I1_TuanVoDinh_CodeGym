@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V is in the array</title>
+</head>
+<body>
+    <h1><input type="number" id="input" placeholder="Enter the number " ></h1>
+    <button onclick="yet()">Converst</button>
+</body>
+</html>
+<script>
+    function yet() {
+        let num = [5, 4, 7, 2, 8, 7, 3, 8, 9, 1];
+        let index = +document.getElementById("input").value;
+        let b= num.indexOf(index)
+        if (b != -1) {
+            document.write(" Ta có mảng: " + num + '<br>');
+            document.write("V is in the array");
+        } else{
+            document.write(" Ta có mảng: " + num + '<br>');
+            document.write("V is not in the array");
+        }
+    }
+</script>

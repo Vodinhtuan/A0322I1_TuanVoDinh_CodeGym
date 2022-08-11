@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Stt</td>
+        <td>Tên nước uống</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>01</td>
+        <td>Cafe</td>
+        <td>
+            <button type="button" id="cafe">Cafe</button>
+        </td>
+    </tr>
+    <tr>
+        <td>02</td>
+        <td>Cam vắt</td>
+        <td>
+            <button type="button" id="cam">Cam vắt</button>
+        </td>
+    </tr>
+    <tr>
+        <td>03</td>
+        <td>Nước ép cà rốt</td>
+        <td>
+            <button type="button" id="carrot">Carrot</button>
+        </td>
+    </tr>
+    <tr>
+        <td>04</td>
+        <td>Nước ép cà chua</td>
+        <td>
+            <button type="button" id="tomato">Cà chua</button>
+        </td>
+    </tr>
+    <tr>
+        <td>05</td>
+        <td>Nước lọc</td>
+        <td>
+            <button type="button" id="water">Nước</button>
+        </td>
+    </tr>
+    <tr>
+        <td>06</td>
+        <td>Nước đừa</td>
+        <td>
+            <button type="button" id="coconut">Nước dừa</button>
+        </td>
+    </tr>
+</table>
+<p id="id_outIII5"></p>
+</body>
+</html>
+<script>
+    let menu = 'Moi ban chon do uong \n' +
+        '1. Cafe. 10.000\n' +
+        '2. Cam vat. 15.000\n' +
+        '3. Nuoc ep ca rot. 17.000\n' +
+        '4. Nuoc ep ca chua. 18.000\n' +
+        '5. Nuoc loc. 7.000\n' +
+        '6. Nuoc dua. 12.000\n' +
+        '7. thoat chon do uong.';
+    let choose;
+    let total = 0;
+    do {
+        choose = parseInt(prompt(menu));
+        let amount = 0;
+        let price = 0;
+        switch (choose) {
+            case 1:
+                price = 10000;
+                break;
+            case 2:
+                price = 15000;
+                break;
+            case 3:
+                price = 17000;
+                break;
+            case 4:
+                price = 18000;
+                break;
+            case 5:
+                price = 7000;
+                break;
+            case 6:
+                price = 12000;
+                break;
+            case 7:
+                continue;
+        }
+        amount = parseInt(prompt("Nhap vao so luong do uong: "));
+        total += amount * price;
+    } while (choose !== 7)
+    alert("Tong so tien nguoi dung phai trả la: " + total);
+
+    /*let Arrray_Menu=[["Cafe",25000],["Cam vắt",35000],["Nước ép cà rốt",20000],["Nước ép cà chua",20000],
+        ["Nước lọc",5000],["Nước dừa",30000]];
+    let Sum=0;
+    function on_add_nuoc(x) {
+        let num=parseInt(prompt("Nhập số lượng( "+Arrray_Menu[x][0]+"): "));
+        let s=Arrray_Menu[x][1]*num;
+        Sum+=s;
+        document.getElementById("id_outIII5").innerText="Tổng số tiền cần trả: "+Sum+"vnd";
+    }
+    on_add_nuoc();*/
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 3</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    const num = parseInt(prompt("enter the number:"));
+    const isFibonacci = num => {
+        if (num === 0 || num === 1) {
+            return true;
+        }
+        let prev = 1;
+        let count = 2;
+        let temp = 0;
+        while (count <= num) {
+            if (prev + count === num) {
+                return true;
+            }
+            ;
+            temp = prev;
+            prev = count;
+            count += temp;
+        }
+        ;
+        return false;
+    };
+    document.write(isFibonacci(num));
+</script>

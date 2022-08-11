@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci division 5</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let n = parseInt(prompt("Enter the number"));
+    let fn=0;
+    let f1=1;
+    let f2=1;
+    // document.write(f1+" ");
+    // document.write(f2+" ");
+    for (let i=0;i<=n;i++){
+        fn=f1+f2;
+        if (fn%5==0){
+        document.write(fn);
+        break;
+        }
+        f1=f2;
+        f2=fn;
+    }
+</script>

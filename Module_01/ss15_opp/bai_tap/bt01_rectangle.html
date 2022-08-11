@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rectangle</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="200" height="100"></canvas>
+</body>
+</html>
+<script>
+    class Rectangle{
+        constructor(length ,width) {
+            this.length = length;
+            this.width = width;
+        }
+        /*Setter - cap nhat thuoc tinh cua Object*/
+       setLength(newLength){
+            this.length = newLength;
+       }
+        /*Getter - lay thong tin cua doi tuong*/
+        getLength(){
+            return this.length;
+        }
+        setWidth(newWidth){
+            this.width = newWidth;
+        }
+        /*Getter - lay thong tin cua doi tuong*/
+        getWidth(){
+            return this.width;
+        }
+        perimeter(){
+            console.log((this.length+this.width)*2);
+        }
+        acreage(){
+            console.log((this.length*this.width));
+        }
+    }
+    var hinhchunhat = new Rectangle(4, 5)
+    hinhchunhat.perimeter();
+    hinhchunhat.acreage();
+</script>

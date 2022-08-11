@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Caculator</title>
+    <style>
+        table{
+            padding: 10px ;
+            margin: 200px auto  auto auto;
+            border-collapse: collapse
+        }
+        form{
+            width: 80%;
+        }
+        th td{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+        <table>
+            <tr>
+                <th colspan="4">
+                    Caculator
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="number" id="inputone"></td>
+                <td colspan="2"><input type="number" id="inputwo"></td>
+            </tr>
+            <tr>
+                <td><button onclick="addition()">Addition(+)</button></td>
+                <td><button onclick="subtraction()">Subtraction(-)</button></td>
+                <td><button onclick="multiplication()">Multiplication(X)</button></td>
+                <td><button onclick="division()">Division(/)</button></td>
+            </tr>
+            <tr>
+                <td style="color: blue">Result: <span id="result"></span></td>
+            </tr>
+        </table>
+
+</body>
+</html>
+<script>
+    function addition() {
+        // lấy dữ liệu từ text box;
+        let enterone = document.getElementById("inputone").value;
+        let entertwo = document.getElementById("inputwo").value;
+        c= parseInt(enterone)+parseInt(entertwo);
+        document.getElementById("result").innerHTML = enterone + "+" + entertwo + "=" + c;
+    }
+    function subtraction() {
+        // lấy dữ liệu từ text box;
+        let enterone = document.getElementById("inputone").value;
+        let entertwo = document.getElementById("inputwo").value;
+        c= parseInt(enterone)-parseInt(entertwo);
+        document.getElementById("result").innerHTML = enterone + "-" + entertwo + "=" + c;
+    }
+    function multiplication() {
+        // lấy dữ liệu từ text box;
+        let enterone = document.getElementById("inputone").value;
+        let entertwo = document.getElementById("inputwo").value;
+        c= parseInt(enterone)*parseInt(entertwo);
+        document.getElementById("result").innerHTML = enterone + "*" + entertwo + "=" + c;
+    }
+    function division() {
+        // lấy dữ liệu từ text box;
+        let enterone = document.getElementById("inputone").value;
+        let entertwo = document.getElementById("inputwo").value;
+        c= parseInt(enterone)/parseInt(entertwo);
+        document.getElementById("result").innerHTML = enterone + "/" + entertwo + "=" + c;
+    }
+</script>

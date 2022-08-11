@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lenght Converter</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        .converter-body{
+            width: 400px;
+            height: 150px;
+            background: burlywood;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            box-shadow: 0px 0px 2px 1px orange;
+        }
+        .converter-title{
+            text-align: center;
+            margin: 13px 0px;
+        }
+        input{
+            height: 25px;
+            text-align: center;
+        }
+        #input{
+            margin-left: 25px;
+        }
+        #inputType,#resultType{
+            width: 166.66px;
+            margin-left: 25px;
+            color: red;
+        }
+        #resultType{
+            margin-left: 12.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter-body">
+        <h1 class="converter-title">Lenght Converter</h1>
+        <input type="text" placeholder="Input" id="input">
+        <span>=</span>
+        <input type="text" placeholder="Result" id="result">
+        <select name="" id="inputType">
+            <option value="meter">Meter</option>
+            <option value="foot">Foot</option>
+        </select>
+        <select name="" id="resultType">
+            <option value="meter">Meter</option>
+            <option value="foot">Foot</option>
+        </select>
+    </div>
+</body>
+</html>
+<script>
+    var input = document.getElementById('input');
+    var result = document.getElementById('result');
+    var inputType = document.getElementById('inputType');
+    var resultType = document.getElementById('resultType');
+    var inputTypeValue, resultTypeValue;
+    
+    input.addEventListener("keyup",myResult);
+    inputType.addEventListener("change",myResult);
+    resultType.addEventListener("change",myResult);
+    
+    inputTypeValue = inputType.value;
+    resultTypeValue = resultType.value;
+    
+    function myResult() {
+        inputTypeValue = inputType.value;
+        resultTypeValue = resultType.value;
+
+        if (inputTypeValue === "meter" && resultTypeValue === "foot"){
+            result.value = Number(input.value)*0.305;
+        } else if (inputTypeValue === "foot" && resultTypeValue === "meter"){
+            result.value = Number(input.value)*3.279;
+        }
+    }
+    
+
+</script>

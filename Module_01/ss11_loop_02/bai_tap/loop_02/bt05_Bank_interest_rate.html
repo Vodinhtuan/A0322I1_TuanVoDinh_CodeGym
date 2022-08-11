@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank interest rate</title>
+</head>
+<body>
+
+</body>
+</html>
+<script> // Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.
+    var money = parseInt(prompt("Enter the amount you want to send"));
+    var month = parseInt(prompt("Enter the time you want to send"));
+    var Interest = parseFloat(prompt("Enter the interest rate you want"));
+    var Result = money*month*Interest/12;
+    var total = money+ Result;
+    document.write("money: "+money+"<br>");
+    document.write("month: "+month+"<br>");
+    document.write("Interest rate: "+Interest+"% <br>");
+    document.write("Interest: "+Result+"<br>");
+    document.write("Total: "+total+"<br>");
+</script>

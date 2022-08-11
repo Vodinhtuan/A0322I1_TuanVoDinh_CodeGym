@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let distance = prompt("Enter the distance");
+    let a = prompt("Enter the numbee");
+    let x = 10 + Math.round(Math.random()*distance)
+    do {
+    if (a==x){
+        alert('congratulations');
+    }else if (a<x){
+        alert('Your number is less than secret number');
+    }else if (a>x){
+        alert('your number is bigger than the secret number');
+    }
+    }while(a!=x)
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var numbers = parseInt(prompt("Enter the number"));
+    var count = 0;
+    var i = 2;
+    function check_primes(x) {
+        if (x<2){return 0}
+        for(let i = 2; i <= Math.sqrt(x); i++)
+        {
+            if(x % i == 0)
+            {
+                return 0;
+            }
+        }
+        return 1;
+
+    }
+    while(count<numbers){
+        if (check_primes(i)==1) {
+            document.write(i + " ");
+            count++;
+        }
+        i++;
+    }
+
+
+</script>

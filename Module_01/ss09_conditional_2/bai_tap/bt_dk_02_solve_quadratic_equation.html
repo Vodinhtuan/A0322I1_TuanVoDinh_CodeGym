@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let a = parseFloat(prompt ("enter the number a"));
+    let b = parseFloat(prompt("enter the number b"));
+    let c = parseFloat(prompt("enter the number c"));
+    let d = b*b - 4*a*c;
+    if (d<0){
+        alert("The equation has no solution");
+    }else if (d==0){
+        alert("Equation with double roots x1 = x1 = "+(-b)+"2*"+a+"="+(-b)/2*a)
+    }else {
+        let x1=((-b)+Math.sqrt(d))/(2*a);
+        let x2=((-b)-Math.sqrt(d))/(2*a)
+        alert("The equation has two distinct solutions: "+x1+" & "+x2);
+    }
+
+
+</script>

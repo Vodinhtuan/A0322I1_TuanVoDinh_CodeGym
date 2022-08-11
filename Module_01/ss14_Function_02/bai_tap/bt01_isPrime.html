@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>isPrime</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function isPrime(n) {
+        if (n<2)
+            return document.write(n+" is not a prime number");
+        for (let i =2;i < n;i++){
+            if (n%i===0){
+                return document.write(n+ "is not a prime number");
+            }
+        }
+        return document.write(n+" is a prime number");
+    }
+    isPrime(7);
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cau 2</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function tryRemoveFromArray(x, y) {
+        let arr = [];
+        let num = y;
+        for (let i = 0; i < x; i++) {
+            arr.push(parseInt(prompt("Nhap vao phần tử thứ " + i + " của mảng.")))
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (arr.indexOf(num) !== -1) {
+                arr[i] = " ";
+                document.write(arr);
+                break;
+            } else {
+                document.write(arr);
+            }
+        }
+    }
+
+    tryRemoveFromArray(5, 7)
+</script>

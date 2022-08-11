@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>missingValue</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let Arra=[];
+    let Arrb=[];
+    let missingValue=[];
+    let sizeA = parseInt(prompt("Nhap do dai mang A: "));
+    let sizeB = parseInt(prompt("Nhap do dai mang B: "));
+    for (let i = 0; i < sizeA; i++) {
+        Arra.push(parseInt(prompt("Nhap vao phan tu mang A: ")));
+    }
+    for (let i = 0; i < sizeB; i++) {
+        Arrb.push(parseInt(prompt("Nhap vao phan tu mang B: ")));
+    }
+    for (let i = 0; i < sizeB; i++) {
+        if (Arra.indexOf(Arrb[i]) ===-1 && missingValue.indexOf(Arrb[i]) === -1){
+            missingValue.push(Arrb[i]);
+        }
+    }
+    missingValue.sort();
+    alert(Arra+"\n"+Arrb+"\n"+"Cac so nguyen suat hien trong mang b nhung khong suat hien trong mang a la: "+missingValue);
+
+
+   /* let arr1 = [1, 2, 3, 4, 5];
+    let arr2 = [1, 2, 3, 7, 8];*/
+
+    /*console.log(arr2.filter(x => !arr1.includes(x)));*/
+
+   /*let arrA = [1,2,3,4,5];
+   let arrB = [2,3,4,5,6,7];
+   let arrResutl = [];
+   function check(x ,arr) {
+       for(let i = 0;i<arr.length;i++){
+           if(arr[i]==x){
+               return false;
+               continue;
+           }
+       }
+       return true;
+   }
+   for (let i =0 ; i<arrB.length;i++){
+       if(check(arrB[i],arrA)==true){
+           arrResutl.push(arrB[i]);
+       }
+   }
+   console.log(arrResutl);*/
+
+    /*function Bai_III2() {
+        let A = [4, 5, 6, 33, 21, 13, 12];
+        let B = [2, 3, 4, 5, 6, 7, 8, 44, 12];
+        let C = [];
+        for (let i = 0; i < B.length; i++) {
+            let kt = true;
+            for (let j = 0; j < A.length; j++) {
+                if (B[i] === A[j]) {
+                    kt = false;
+                    break;
+                }
+            }
+            if (kt === true) {
+                for (let k = 0; k < C.length; k++) {
+                    if (B[i] === C[k]) {
+                        kt = false;
+                        break;
+                    }
+                }
+            }
+
+            if (kt === true) {
+                C.push(B[i]);
+            }
+        }
+        console.log(C.join(','));
+    }
+   Bai_III2();*/
+</script>

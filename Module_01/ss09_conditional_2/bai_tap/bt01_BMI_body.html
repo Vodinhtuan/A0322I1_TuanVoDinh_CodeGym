@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉ số BMI</title>
+    <style>
+        body{
+            margin: 200px 200px 200px 200px;
+        }
+        table{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>Body mass index-BMI</tr>
+        <tr>
+            <td><input id="inputWeight" type="text" placeholder="Enter weight"></td>
+            <td><input id="inputHeight" type="text" placeholder="Enter height"></td>
+        </tr>
+        <tr>
+            <th colspan="2"><button onclick="result()">Result</button></th>
+        </tr>
+        <tr>
+            <td style="color: blue">Result: <span id="ketqua"></span></td>
+        </tr>
+    </table>
+</body>
+</html>
+<script>
+
+    function result() {
+        var weight = document.getElementById("inputWeight").value;
+        var height = document.getElementById("inputHeight").value;
+        var bmi = weight /  height ^ 2 ;
+        if (bmi < 18) {
+            /*document.write("Underweight");*/
+            document.getElementById("ketqua").innerHTML = "Underweight";
+        }else if (bmi < 25.0) {
+            /*document.write("Normal");*/
+            document.getElementById("ketqua").innerHTML = "Normal";
+        }else if (bmi < 30.0) {
+            /*document.write("Overweight");*/
+            document.getElementById("ketqua").innerHTML = "Overweight";
+        }else
+            /*document.write("Obese");*/
+            document.getElementById("ketqua").innerHTML = "Obese";
+    }
+
+</script>

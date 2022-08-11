@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Same or not?</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function mutation(arr) {
+        var firstItem = arr[0].toLowerCase();
+        var seconItem = arr[1].toLowerCase();
+        for (var i=0; i<seconItem.length;i++){
+            if (firstItem.indexOf(seconItem[i]) === -1)
+                return false;
+        }
+        return true;
+    }
+    (mutation("tuan", "tuan");
+</script>

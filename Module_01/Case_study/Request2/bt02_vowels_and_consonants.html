@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vowels and consonants</title>
+</head>
+<body>
+    <div><input type="text" id="input1" placeholder="Input"></div><br>
+    <button onclick="check()">CodeGym</button><br><br>
+    <div>Result: <p id="result"></p></div>
+</body>
+</html>
+<script>
+    function check() {
+        var input = document.getElementById("input1").value;
+
+        switch (input) {
+            case "u":
+            case "e":
+            case "o":
+            case "i":
+            case "e":
+            case "a":
+                document.getElementById("result").innerHTML = input+" is a vowel";
+                break;
+            default:
+                document.getElementById("result").innerHTML = input+" is not a vowel";
+        }
+    }
+
+</script>

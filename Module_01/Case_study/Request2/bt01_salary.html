@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary</title>
+    <style>
+
+    </style>
+</head>
+<body>
+     <table>
+         <tr>
+             <td><input id="inputSalary" type="number" placeholder="Enter your Salary "></td>
+             <th><button onclick="result()">Result</button></th>
+         </tr>
+         <tr>
+             <td>Your income tax is:</td>
+             <td><span id="Tax1"></span></td>
+         </tr>
+         <tr>
+             <td>Your net salary is:</td>
+             <td><span id="Net2"></span></td>
+         </tr>
+     </table>
+</body>
+</html>
+<script>
+    function result() {
+        var input = parseFloat(document.getElementById("inputSalary").value);
+        if (input<7000000){
+            document.getElementById("Tax1").innerHTML = "5%";
+            document.getElementById("Net2").innerHTML = input-(input*0.05);
+        }else if (7000000<input<15000000){
+            document.getElementById("Tax1").innerHTML = "15%";
+            document.getElementById("Net2").innerHTML = input-(input*0.15);
+        }else if (input==15000000){
+            document.getElementById("Tax1").innerHTML = "20%";
+            document.getElementById("Net2").innerHTML = input-(input*0.2);
+        }else {
+            document.getElementById("Tax1").innerHTML = " ";
+            document.getElementById("Net2").innerHTML = " ";
+        }
+    }
+</script>

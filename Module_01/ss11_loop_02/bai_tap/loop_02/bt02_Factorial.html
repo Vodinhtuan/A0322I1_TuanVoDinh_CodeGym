@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factorial</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var factorial=1;
+    var input = parseInt(prompt("Enter the number"));
+    while (input<0) {
+        parseInt(prompt("Enter a number greater than 0."));
+    }
+    for (var i=1; i<input;i++){
+        factorial = factorial*i;
+    }
+    document.write("Factorial for "+input+"= "+factorial);
+</script>

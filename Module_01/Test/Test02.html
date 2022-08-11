@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 2</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function checknumber(x, y) {
+        let sum = 0;
+        for (let i = 1; i < x; i++) {
+            if (x % i === 0) {
+                sum += i;
+            }
+        }
+        if (sum === y) {
+            alert("Số " + x + " và số " + y + " là 2 số thân thiết.");
+        } else
+            alert("Số " + x + " và số " + y + " không phải là 2 số thân thiết.");
+    }
+
+    checknumber(220, 284);
+    /*   let number1 = parseInt(prompt("Nhập số thứ nhất"));
+    let number2 = parseInt(prompt("Nhập số thứ 2"));
+    function check(a,b) {
+        let temp = 0;
+        for(let i =0;i<a;i++){
+            if(a%i==0){
+                temp+=i;
+            }
+        }
+        if(temp==b){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    let result = 0;
+    result = check(number1,number2);
+    alert(result);*/
+</script>

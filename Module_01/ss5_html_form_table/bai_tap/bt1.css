@@ -1,0 +1,22 @@
+/*body{*/
+/*    width: 800px;*/
+/*    margin: auto;*/
+/*}*/
+table{
+    margin: 50px;
+}
+th, td {
+    padding: 1px;
+    text-align: left;
+}
+.tieude{
+    color: white;
+    background-color: orange;
+}
+.tieude2{
+    color: blue;
+    background-color: aquamarine;
+}
+.bang02{
+    background-color: bisque;
+}
