@@ -53,9 +53,11 @@ CREATE TABLE NhaCC(
 CREATE TABLE SDT(
 	SDT INT NOT NULL,
     MaNCC INT NOT NULL,
-    PRIMARY KEY (SDT, MaNCC)
+    PRIMARY KEY (SDT, MaNCC),
+    FOREIGN KEY (MaNCC) REFERENCES NhaCC (MaNCC)
 );
 	
+
 /*
 	PhieuXuat(SoPX___, NgayXuat)
     ChiTietPhieuXuat(SoPX___, MaVTU___, DGXuat, SLXuat)
