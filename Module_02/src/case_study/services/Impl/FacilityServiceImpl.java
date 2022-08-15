@@ -2,6 +2,7 @@ package case_study.services.Impl;
 
 import case_study.models.Facility;
 import case_study.models.House;
+import case_study.models.Room;
 import case_study.models.Villa;
 import case_study.services.FacilityService;
 
@@ -79,14 +80,35 @@ public class FacilityServiceImpl implements FacilityService {
         int people = Integer.parseInt(scanner.nextLine());
         System.out.print("Nhập kiểu thuê: ");
         String rentType = scanner.nextLine();
+        System.out.print("Nhập tiêu chuẩn phòng: ");
+        String roomStandard = scanner.nextLine();
+        System.out.println("Nhập số tầng: ");
+        int floor = Integer.parseInt(scanner.nextLine());
 
-        House house = new House(id, name, area, price, people, rentType);
+        House house = new House(id, name, area, price, people, rentType, roomStandard,floor);
         facilityIntegerMap.put(house,0);
         System.out.println("Thêm mới house thành công!");
     }
 
     @Override
     public void addNewRoom() {
+        System.out.print("Nhập id: ");
+        String id = scanner.nextLine();
+        System.out.print("Nhập tên: ");
+        String name = scanner.nextLine();
+        System.out.print("Nhập diện tích: ");
+        double area = Double.parseDouble(scanner.nextLine());
+        System.out.print("Nhập giá tiền: ");
+        int price = Integer.parseInt(scanner.nextLine());
+        System.out.print("Nhập số lượng người: ");
+        int people = Integer.parseInt(scanner.nextLine());
+        System.out.print("Nhập kiểu thuê: ");
+        String rentType = scanner.nextLine();
+        System.out.print("Nhập dịch vụ miễn phí: ");
+        String freeService = scanner.nextLine();
 
+        Room room = new Room(id, name, area, price, people, rentType, freeService);
+        facilityIntegerMap.put(room,0);
+        System.out.println("Thêm mới room thành công!");
     }
 }
