@@ -94,11 +94,27 @@ CREATE TABLE hop_dong_chi_tiet(
     FOREIGN KEY (ma_hop_dong) REFERENCES hop_dong (ma_hop_dong),
     FOREIGN KEY (ma_dich_vu_di_kem) REFERENCES dich_vu_di_kem (ma_dich_vu_di_kem)
 );
+
+-- 2
 INSERT INTO nhan_vien (ma_nhan_vien, ho_ten)
-VALUE (3, 'Ho Thi Yen'),
-      (9, 'Tong Hoang');
+VALUE (3, 'Hồ Thị Yến'),
+      (9, 'Tòng Hoang');
+
+-- ss2 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
+SELECT * FROM nhan_vien
+WHERE (ho_ten like 'H%' or ho_ten like 'T%' or ho_ten like 'K%') and (char_length(ho_ten)<=15);
+
+-- 3
 INSERT INTO khach_hang (ma_khach_hang, ho_ten)
 VALUE (2,'Phạm Xuân Diệu'),
-	  (
+	  (4, 'Dương Văn Quan'),
+      (10, 'Nguyễn Tâm Đắc');
+      
+-- 4
+INSERT INTO khach_hang (ma_khach_hang, ho_ten, so_lan_dat_phong)
+VALUE (7, 'Nguyễn Mỹ Kim', 1),
+	  (3, 'Trương Đình Nghệ', 2),
+      (4, 'Dương Văn Quan', 4);
+
 
 
