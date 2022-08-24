@@ -86,6 +86,7 @@ CREATE TABLE hop_dong(
     FOREIGN KEY (ma_khach_hang) REFERENCES khach_hang (ma_khach_hang),
     FOREIGN KEY (ma_dich_vu) REFERENCES dich_vu (ma_dich_vu)
 );
+
 CREATE TABLE hop_dong_chi_tiet(
 	ma_hop_dong_chi_tiet INT PRIMARY KEY NOT NULL,
     ma_hop_dong INT,
@@ -224,3 +225,56 @@ from nhan_vien
 where (ho_ten like 'H%' or ho_ten like 'T%' or ho_ten like 'K%') and (char_length(ho_ten)<=15);
 
 -- task 3
+select *
+from khach_hang
+where (dia_chi like '%Quảng Trị' or dia_chi like '%Đà Nẵng') and year(curdate())-year(ngay_sinh) between 18 and 50;
+select * from khach_hang;
+
+-- task 4
+select k.ma_khach_hang , k.ho_ten , l.ten_loai_khach , h.ma_hop_dong , count(h.ma_khach_hang) as so_lan_dat_phong
+from khach_hang k 
+join loai_khach l on k.ma_loai_khach = l.ma_loai_khach
+join hop_dong h on k.ma_khach_hang = h.ma_khach_hang
+where l.ten_loai_khach ='Diamond'
+group by h.ma_khach_hang
+order by so_lan_dat_phong;
+
+-- task 5
+create view w_tinh_tien as 
+select k.ma_khach_hang, k.ho_ten , lk.ten_loai_khach ,hd.ma_hop_dong ,dv.ten_dich_vu, lk.ma_loai_khach,
+hd.ngay_lam_hop_dong, hd.ngay_ket_thuc,( ifnull(dv.chi_phi_thue,0)+sum(ifnull(hdct.so_luong,0)*ifnull(dvdk.gia,0))) as tong_tien
+from khach_hang k 
+left join loai_khach lk on k.ma_loai_khach = lk.ma_loai_khach
+left join hop_dong hd on hd.ma_khach_hang = k.ma_khach_hang
+left join dich_vu dv on dv.ma_dich_vu = hd.ma_dich_vu
+left join hop_dong_chi_tiet hdct on  hdct.ma_hop_dong = hd.ma_hop_dong
+left join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+group by hd.ma_hop_dong
+order by k.ma_khach_hang;
+
+select * 
+from w_tinh_tien;
+
+-- task 6 
+select dv.ma_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue ,ldv.ten_loai_dich_vu
+from dich_vu dv 
+join loai_dich_vu ldv on ldv.ma_loai_dich_vu = dv.ma_loai_dich_vu
+join hop_dong hd on hd.ma_dich_vu = dv.ma_dich_vu
+where hd.ma_dich_vu not in(
+select hd.ma_dich_vu
+from hop_dong hd
+where  (year(hd.ngay_lam_hop_dong) =2021) and month(hd.ngay_lam_hop_dong) in(1,2,3))
+group by dv.dien_tich;
+
+-- task 7
+select dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich,
+dv.so_nguoi_toi_da, dv.chi_phi_thue, ldv.ten_loai_dich_vu
+from dich_vu dv
+join loai_dich_vu ldv on ldv.ma_loai_dich_vu = dv.ma_loai_dich_vu
+join hop_dong hd on hd.ma_dich_vu = dv.ma_dich_vu
+where year(hd.ngay_lam_hop_dong)= 2020
+and  hd.ma_dich_vu not in(
+select hd.ma_dich_vu
+from hop_dong hd 
+where year(hd.ngay_lam_hop_dong)=2021)
+group by hd.ma_dich_vu;
