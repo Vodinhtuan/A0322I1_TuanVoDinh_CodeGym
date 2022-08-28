@@ -406,13 +406,32 @@ group by nv.ma_nhan_vien
 			chỉ cập nhật những khách hàng đã từng đặt phòng với 
 			Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
 */
-
 update khach_hang
 set ma_loai_khach = 1
-where ma_loai_khach in (select mlk.ma_loai_khach from
-(select ma_loai_khach, ten_loai_khach, sum(ifnull(tong_tien),0)) as tong_tien_2021
-from 
-);
+where ma_loai_khach in (select mlk.ma_loai_khach from (
+select ma_khach_hang,  ten_loai_khach, ma_loai_khach,
+sum(ifnull(tong_tien,0)) as tong_tien_2021
+from w_tinh_tien 
+where year(ngay_lam_hop_dong) = '2021' 
+and ten_loai_khach= 'Platinium'
+group by ma_khach_hang
+having tong_tien_2021 > 1000000) as mlk);
 
 
+/* task 18: Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+*/
+delete from khach_hang
+where ma_khach_hang in (
+select hd.ma_khach_hang from (
+select hd.ma_khach_hang
+from hop_dong hd 
+join khach_hang kh on kh.ma_khach_hang = hd.ma_khach_hang
+where year(hd.ngay_lam_hop_dong) < 2021 ) as mhd );
 
+
+/* task 19: Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+*/
+update dich_vu_di_kem
+set gia = gia * 2
+where gia in ( select dvdk.gia from(
+select dvdk.ten-dich_vu_di_kem)
