@@ -422,7 +422,7 @@ having tong_tien_2021 > 1000000) as mlk);
 */
 delete from khach_hang
 where ma_khach_hang in (
-select hd.ma_khach_hang from (
+select ma_khach_hang from (
 select hd.ma_khach_hang
 from hop_dong hd 
 join khach_hang kh on kh.ma_khach_hang = hd.ma_khach_hang
