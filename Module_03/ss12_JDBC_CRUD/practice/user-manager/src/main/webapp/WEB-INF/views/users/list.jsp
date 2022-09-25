@@ -15,7 +15,7 @@
 <center>
     <h1>User Management</h1>
     <br>
-    <form method="post">
+    <form method="post" action="/users?action=findByCountry">
         <input type="text" name="country" placeholder="input country">
         <input type="submit" value="search">
     </form>
@@ -46,6 +46,9 @@
             </tr>
         </c:forEach>
     </table>
+    <h3>
+        <a href="/users?action=sortByName">Sort By Name</a>
+    </h3>
 </div>
 </body>
 </html>

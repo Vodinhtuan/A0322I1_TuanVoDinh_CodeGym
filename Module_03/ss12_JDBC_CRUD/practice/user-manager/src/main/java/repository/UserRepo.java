@@ -18,6 +18,7 @@ public class UserRepo implements IUser{
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
     private static final String FIND_BY_COUNTRY = "select * from users where country like ?; ";
+    private static final String SORT_BY_NAME = "SELECT * FROM users ORDER BY name;";
     protected Connection getConnection() {
         Connection connection = null;
         try {
@@ -118,7 +119,8 @@ public class UserRepo implements IUser{
     @Override
     public boolean updateUser(model.User user) throws SQLException {
         boolean rowUpdated;
-        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());
@@ -139,10 +141,36 @@ public class UserRepo implements IUser{
             statement.setString(1,"%" + country + "%");
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String countryFound = rs.getString("country");
-                output.add(new User(name,email,countryFound));
+                output.add(new User(id,name,email,countryFound));
+            }
+            if(output.size() > 0){
+                return output;
+            }
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<User> sortByName() {
+        List<User> output = new ArrayList<>();
+        try (
+                Connection connection = getConnection();
+                PreparedStatement statement = connection.prepareStatement(SORT_BY_NAME);
+                ResultSet rs = statement.executeQuery();
+        ){
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String countryFound = rs.getString("country");
+                output.add(new User(id,name,email,countryFound));
             }
             if(output.size() > 0){
                 return output;

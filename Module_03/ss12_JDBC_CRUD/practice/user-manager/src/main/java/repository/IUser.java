@@ -12,4 +12,5 @@ public interface IUser {
     public boolean deleteUser(int id) throws SQLException;
     public boolean updateUser(User user) throws SQLException;
     List<User> findByCountry(String country);
+    List<User> sortByName ();
 }

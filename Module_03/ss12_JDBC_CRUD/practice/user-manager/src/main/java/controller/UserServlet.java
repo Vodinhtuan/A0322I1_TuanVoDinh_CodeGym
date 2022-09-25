@@ -38,6 +38,8 @@ public class UserServlet extends HttpServlet {
                 case "delete":
                     deleteUser(request, response);
                     break;
+                case "sortByName":
+                    sortByName(request, response);
                 default:
                     listUser(request, response);
                     break;
@@ -139,7 +141,14 @@ public class UserServlet extends HttpServlet {
         dispatcher.forward(request, response);
 
     }
+    private void sortByName(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<User>listUser = userRepo.sortByName();
+        request.setAttribute("listUser", listUser);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/users/list.jsp");
+        dispatcher.forward(request,response);
+    }
 
 }
-
+//codegym@2021
 
