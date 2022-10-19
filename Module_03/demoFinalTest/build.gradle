@@ -19,6 +19,10 @@ dependencies {
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     providedCompile 'org.apache.tomcat:tomcat-catalina:9.0.26'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+    compileJava.options.encoding = 'UTF-8'
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
 }
 
 test {
