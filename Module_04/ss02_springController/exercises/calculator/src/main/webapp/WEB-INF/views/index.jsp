@@ -17,8 +17,6 @@
     </select>
     <input type="submit" value="output">
 </form>
-
     <p >Result: ${result}</p>
-
 </body>
 </html>
