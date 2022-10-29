@@ -2,73 +2,84 @@ package com.example.productmanagement.repository.implement;
 
 import com.example.productmanagement.model.Product;
 import com.example.productmanagement.repository.ProductRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
-
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
-    private static Map<String,Product> productMap;
+    private static  List<Product> list;
 
     static {
-        productMap = new LinkedHashMap<>();
-        productMap.put("001", new Product("001","product 01", 12345, "OOA", "Hello"));
-        productMap.put("002", new Product("002","product 02", 54545, "OOA", "actical"));
-        productMap.put("003", new Product("003","product 03", 535, "OOA", "keepFit"));
-        productMap.put("004", new Product("004","product 04", 223, "OOA", "doGardening"));
-        productMap.put("005", new Product("005","product 05", 767, "OOA", "Hi"));
-        productMap.put("006", new Product("006","product 06", 787, "OOA", "medical"));
-    }
-    @Override
-    public List<Product> findAll() {
-        return new ArrayList<>(productMap.values());
+        list = new ArrayList<>();
+        list.add(new Product(1,"Lam",123.3,"dep","Honda"));
+        list.add(new Product(2,"Hong",12.3,"dep","Honda"));
+        list.add(new Product(3,"Do",1.3,"xau","NOn"));
+        list.add(new Product(4,"Vang",10.3,"dep","Suzuki"));
     }
 
     @Override
-    public void create(Product product) throws Exception {
-        if(productMap.containsKey(product.getId())){
-            throw new Exception("Duplicate id");
-        }else {
-            productMap.put(product.getId(),product);
-        }
+    public List<Product> findAll() {
+        return list;
+    }
+
+    @Override
+    public void create(Product product) {
+        list.add(product);
     }
 
     @Override
     public void update(Product product) throws Exception {
-        if(!productMap.containsKey(product.getId())){
-            throw new Exception("Product not Found");
-        }else{
-            productMap.put(product.getId(),product);
+        int index = 0;
+        for(Product productFound : list){
+            if(productFound.getId() == product.getId()){
+                break;
+            }
+            index++;
         }
+        if(index > list.size()){
+            throw new Exception("product not found");
+        }
+        list.set(index,product);
     }
 
     @Override
-    public void delete(String id) throws Exception {
-        if(productMap.containsKey(id)){
-            productMap.remove(id);
-        }else{
-            throw new Exception("Product not Found");
+    public void delete(int id) throws Exception {
+        int index = 0;
+        for(Product productFound : list){
+            if(productFound.getId() == id){
+                break;
+            }
+            index++;
         }
+        if(index > list.size()){
+            throw new Exception("product not found");
+        }
+        list.remove(index);
     }
 
     @Override
-    public Product findById(String id) throws Exception {
-        if(productMap.containsKey(id)){
-            return productMap.get(id);
+    public Product findById(int id) throws Exception {
+        int index = 0;
+        for(Product productFound : list){
+            if(productFound.getId() == id){
+                break;
+            }
+            index++;
         }
-        throw new Exception("Product not Found");
+        if(index > list.size()){
+            throw new Exception("product not found");
+        }
+        return list.get(index);
     }
 
     @Override
-    public List<Product> findByName(String name) throws Exception {
-        List<Product> result = new LinkedList<>();
-        Set<String> sizeMap = productMap.keySet();
-        for(String status: sizeMap){
-            if(productMap.get(status).getName().matches(".*["+name+"].*")){
-                result.add(productMap.get(status));
+    public List<Product> findByName(String nameSearch) {
+        List<Product> products = new LinkedList<>();
+        for(Product product: list) {
+            if (product.getName().matches("(.*)"+nameSearch+"(.*)")) {
+                products.add(product);
             }
         }
-        if(result.size() != 0){
-            return result;
-        }
-        throw new Exception("Product not Found");
+        return products;
     }
 }

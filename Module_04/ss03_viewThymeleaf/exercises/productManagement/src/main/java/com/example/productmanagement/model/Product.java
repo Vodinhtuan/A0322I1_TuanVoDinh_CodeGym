@@ -1,7 +1,7 @@
 package com.example.productmanagement.model;
 
 public class Product {
-    private String id;
+    private int id;
     private String name;
     private double price;
     private String description;
@@ -10,7 +10,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String id, String name, double price, String description, String manufacture) {
+    public Product(int id, String name, double price, String description, String manufacture) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -18,11 +18,11 @@ public class Product {
         this.manufacture = manufacture;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

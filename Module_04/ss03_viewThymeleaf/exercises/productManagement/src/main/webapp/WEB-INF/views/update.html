@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Update Product</title>
 </head>
 <body>
 <h1>Add new product</h1>
-<c:if test="${error != null}">
+<th:if test="${error != null}">
     <h2 style="color: red">${error}</h2>
-</c:if>
+</th:if>
 
-<a href="/product">Return List</a>
+<a th:href="@{/product/list}">Return List</a>
 <form action="/product" method="post">
     <table border="1">
         <tr>
             <td>ID</td>
-            <td>${product.id}</td>
+            <td >${product.id}</td>
         </tr>
         <tr>
             <td>Name</td>
