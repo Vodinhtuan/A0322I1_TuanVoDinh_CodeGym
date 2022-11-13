@@ -8,12 +8,18 @@
 <h1>Blog list</h1>
 <form method="GET" th:action="@{/blog/search}" >
     <label>Search by name: </label>
-    <input type="text" name="txtSearch"/>
-    <input name="action" type="hidden" value="findName"/>
+    <input type="text" name="txtSearch" placeholder="Name search"/>
     <input type="submit" value="Search"/>
 </form>
+
+    <form method="get" th:action="@{/blog/search2}">
+        <input type="text" name="idSearch" placeholder="Id search"/>
+        <input type="submit" value="Search"/>
+    </form>
+
 <p th:if ="${blogs.isEmpty()}" style="color: red">List Empty</p>
 <a th:href="@{/blog/create}">Add new blog</a>
+
 <table border="1" th:unless="${blogs.isEmpty()}">
     <tr>
         <th>No</th>

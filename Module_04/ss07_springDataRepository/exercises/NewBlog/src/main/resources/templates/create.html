@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Add new blog</h1>
-<a th:href="@{/blog}">Return List</a>
+<a th:href="@{/blog/list}">Return List</a>
 <form th:action="@{/blog/create}" th:object="${blog}" method="POST" novalidate="novalidate">
     <table border="1">
         <tr>

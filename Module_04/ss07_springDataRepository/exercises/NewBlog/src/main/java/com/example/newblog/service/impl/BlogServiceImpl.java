@@ -22,6 +22,16 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
+    public List<Blog> findBlogById(int id) {
+        List<Blog> iterable = iBlogRepository.findById(id); //Iterable: dùng để sắp xếp;
+        List<Blog> blogList = new ArrayList<>();
+        for (Blog b: iterable) {
+            blogList.add(b);
+        }
+        return blogList;
+    }
+
+    @Override
     public List<Blog> getList() {
         Iterable<Blog> iterable = iBlogRepository.findAll(); //Iterable: dùng để sắp xếp;
         List<Blog> blogListList = new ArrayList<>();
@@ -47,9 +57,8 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public List<Blog> findByName(String name) {
-        //return iBlogRepository.findByNameContains(name);         // like ( nhập 1 từ -> ra các tên có từ đó )
-        return (List<Blog>) iBlogRepository.findBlogByNameBlog(name);
+    public List<Blog> findByName(String nameOrId) {
+        return iBlogRepository.findBlogsByNameBlog(nameOrId);
     }
 
     @Override

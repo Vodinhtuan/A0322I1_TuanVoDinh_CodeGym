@@ -9,13 +9,13 @@ import java.util.List;
 @Repository
 public interface IBlogRepository extends PagingAndSortingRepository<Blog, Integer> {
 
-    /*List<Blog> findByNameContains(String nameBlog);
+    List<Blog> findBlogsByNameBlog(String nameBlog);
 
-    //@Query("Select b from Blog b where b.nameBlog like :nameBlog")
-    List<Blog> searchAllByName(String name);
+    @Query("Select b from Blog b where b.nameBlog like :nameBlog")
+    List<Blog> searchAllByNameBlog(String nameBlog);
 
-    //@Query("Select b from Blog b where b.nameBlog = :nameBlog")
-    Blog findBlogByName(String nameBlog);*/
-    Blog findBlogByNameBlog(String name);
+    @Query("Select b from Blog b where b.nameBlog = :nameBlog")
+    Blog findBlogByName(String nameBlog);
+
 
 }
