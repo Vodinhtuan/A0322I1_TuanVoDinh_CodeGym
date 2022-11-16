@@ -4,30 +4,30 @@
   <title>Form</title>
 </head>
 <body>
-<form action="#" th:object="${user}" th:action="@{/form/result}" method="post" >
+<form th:object="${user}" th:action="@{/form/create}" method="post" >
   <table>
-    <td>First Name:</td>
+    <td th:text="#{firstName}">First Name:</td>
     <td><input th:field="*{firstName}" /></td>
     <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">Name Error</td>
     </tr>
     <tr>
-      <td>Last Name:</td>
+      <td th:text="#{lastName}">Last Name:</td>
       <td><input th:field="*{lastName}" /></td>
       <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error">Name Error</td>
     </tr>
     <tr>
-      <td>Phone Number:</td>
+      <td th:text="#{phoneNumber}">Phone Number:</td>
       <td><input th:field="*{phoneNumber}" /></td>
       <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="error">Name Error</td>
     </tr>
     <tr>
-      <td>Age:</td>
+      <td th:text="#{age}">Age:</td>
       <td><input th:field="*{age}" type="number" /></td>
       <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error">Name Error</td>
     </tr>
     <tr>
-      <td>Email:</td>
-      <td><input th:field="*{email}" type="email" /></td>
+      <td th:text="#{email}">Email:</td>
+      <td><input th:field="*{email}" /></td>
       <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error">Name Error</td>
     </tr>
     <tr>

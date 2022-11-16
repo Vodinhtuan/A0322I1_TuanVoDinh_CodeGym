@@ -1,5 +1,9 @@
 package com.example.uservalidation.model;
 
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User {
+public class User implements Validator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
@@ -89,5 +93,33 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return User.class.isAssignableFrom(clazz);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        User user = (User) target;
+        String number = user.getPhoneNumber();
+        ValidationUtils.rejectIfEmpty(errors, "phoneNumber", "phoneNumber.empty");
+        if (number.length()>11 || number.length()<10){
+            errors.rejectValue("phoneNumber", "phoneNumber.length");
+        }
+        if (!number.startsWith("0")){
+            errors.rejectValue("phoneNumber", "phoneNumber.startsWith");
+        }
+        if (!number.matches("(^$|[0-9]*$)")){
+            errors.rejectValue("phoneNumber", "phoneNumber.matches");
+        }
+        String email = user.getEmail();
+        if (email.length()<0){
+            errors.rejectValue("email", "rong");
+        }
+        if (email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+            errors.rejectValue("email", "loi");
+        }
     }
 }

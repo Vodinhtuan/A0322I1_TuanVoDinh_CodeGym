@@ -28,5 +28,9 @@ public class PhoneNumberValidator implements Validator {
         if (!number.matches("(^$|[0-9]*$)")){
             errors.rejectValue("phoneNumber", "phoneNumber.matches");
         }
+        String email = user.getEmail();
+        if (email.length()<0){
+            errors.rejectValue("email", "rong");
+        }
     }
 }

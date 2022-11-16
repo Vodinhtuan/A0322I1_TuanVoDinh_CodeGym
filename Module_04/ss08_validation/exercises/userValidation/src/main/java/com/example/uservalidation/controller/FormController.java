@@ -22,10 +22,8 @@ import java.util.List;
 public class FormController {
     @Autowired
     UserServiceImpl userService;
-    @Autowired
-    PhoneNumberValidator phoneNumberValidator;
 
-    @GetMapping("/list")
+    @GetMapping("/create")
     public String displayCreate(Model model) {
         model.addAttribute("user", new User());
         return "index";
@@ -37,15 +35,14 @@ public class FormController {
         return new ModelAndView("index", "users", users);
     }*/
 
-    @PostMapping("/result")
-    public String checkValidation (@Valid @ModelAttribute("phoneNumber")User user, BindingResult bindingResult, Model model){
+    @PostMapping("/create")
+    public String checkValidation (@Valid @ModelAttribute("user")User user, BindingResult bindingResult){
         new PhoneNumberValidator().validate(user, bindingResult);
         if (bindingResult.hasFieldErrors()){
             return "/index";
         }
         else {
-            model.addAttribute("user", user);
-            userService.save(user);
+           userService.save(user);
             return "/result";
         }
     }
