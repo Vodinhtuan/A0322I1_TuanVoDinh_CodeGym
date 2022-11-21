@@ -48,6 +48,12 @@ public class Cart {
         }
     }
 
+    public void desProduct(Product product){            // Sử dụng để xóa sản phẩm khỏi giỏ hàng
+        Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
+        Integer newQuantity = itemEntry.getValue()-1;
+        products.replace(itemEntry.getKey(), newQuantity);
+    }
+
     public Integer countProductQuantity(){      // Đếm số lượng sản phẩm hiện có trong giỏ hàng
         Integer productQuantity = 0;
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {

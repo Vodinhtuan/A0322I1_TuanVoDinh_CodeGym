@@ -1,6 +1,6 @@
 package com.codegym.ecommercepage.service;
 
-import com.codegym.shoppingcart.model.Product;
+import com.codegym.ecommercepage.model.Product;
 
 import java.util.Optional;
 
