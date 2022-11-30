@@ -12,4 +12,5 @@ public interface ISmartphoneService {
     SmartPhone save(SmartPhone smartPhone);
 
     void remove(Long id);
+
 }

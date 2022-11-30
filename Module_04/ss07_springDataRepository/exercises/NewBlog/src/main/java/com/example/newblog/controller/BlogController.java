@@ -3,20 +3,12 @@ package com.example.newblog.controller;
 import com.example.newblog.model.Blog;
 import com.example.newblog.repository.ICategoryRepository;
 import com.example.newblog.service.impl.BlogServiceImpl;
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.xml.namespace.QName;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
