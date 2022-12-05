@@ -22,4 +22,15 @@ public class Labour extends Officer{
     public void setRank(int rank) {
         this.rank = rank;
     }
+
+    @Override
+    public String toString() {
+        return "Labour{" +
+                "rank=" + rank +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

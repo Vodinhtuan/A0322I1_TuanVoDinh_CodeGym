@@ -46,4 +46,14 @@ public abstract class Officer {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Officer{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
