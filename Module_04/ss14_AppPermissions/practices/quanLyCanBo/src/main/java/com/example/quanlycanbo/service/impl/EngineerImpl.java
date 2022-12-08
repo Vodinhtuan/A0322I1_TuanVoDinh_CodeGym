@@ -1,8 +1,6 @@
 package com.example.quanlycanbo.service.impl;
 
 import com.example.quanlycanbo.model.Engineer;
-import com.example.quanlycanbo.model.Labour;
-import com.example.quanlycanbo.model.Staff;
 import com.example.quanlycanbo.service.IEngineer;
 
 import java.util.ArrayList;

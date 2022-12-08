@@ -49,10 +49,23 @@ public abstract class Officer {
 
     @Override
     public String toString() {
-        return "Officer{" +
-                "name='" + name + '\'' +
+        String a="";
+        switch(gender){
+            case 1:
+                a="Male";
+                break;
+            case 2:
+                a="Female";
+                break;
+            case 3:
+                a="Other";
+                break;
+        }
+        return "Engineer{" +
+                "trainingIndustry='" + trainingIndustry + '\'' +
+                ", name='" + name + '\'' +
                 ", age=" + age +
-                ", gender=" + gender +
+                ", gender=" + a+
                 ", address='" + address + '\'' +
                 '}';
     }
