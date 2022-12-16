@@ -1,52 +1,64 @@
 package com.example.casestudy_ss1.model.contract;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "contract_detail")
 public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer contract_Detail_Id;
+    private Integer contractDetailId;
     private int quantity;
 
     public ContractDetail() {
     }
 
+    public ContractDetail(Integer contractDetailId, int quantity, AttachService attachService, Contract contract) {
+        this.contractDetailId = contractDetailId;
+        this.quantity = quantity;
+        this.attachService = attachService;
+        this.contract = contract;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "contract_Detail_Id", referencedColumnName = "attach_Service_Id")
-    private AttachService attachServices;
+    public Contract getContract() {
+        return contract;
+    }
 
-    @ManyToOne(mappedBy = contract, cascade = CascadeType.REMOVE)
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
+    @ManyToOne(targetEntity = AttachService.class, cascade = CascadeType.REMOVE)
+    private AttachService attachService;
+
+    @ManyToOne(targetEntity = Contract.class, cascade = CascadeType.REMOVE)
     private Contract contract;
 
-    public ContractDetail(Integer contract_Detail_Id, int quantity, AttachService attachServices) {
-        this.contract_Detail_Id = contract_Detail_Id;
+    public ContractDetail(Integer contract_Detail_Id, int quantity, AttachService attachService) {
+        this.contractDetailId = contract_Detail_Id;
         this.quantity = quantity;
-        this.attachServices = attachServices;
+        this.attachService = attachService;
     }
 
-    public AttachService getAttachServices() {
-        return attachServices;
+    public AttachService getAttachService() {
+        return attachService;
     }
 
-    public void setAttachServices(AttachService attachServices) {
-        this.attachServices = attachServices;
+    public void setAttachService(AttachService attachService) {
+        this.attachService = attachService;
     }
 
     public ContractDetail(Integer contract_Detail_Id, int quantity) {
-        this.contract_Detail_Id = contract_Detail_Id;
+        this.contractDetailId = contract_Detail_Id;
         this.quantity = quantity;
     }
 
-    public Integer getContract_Detail_Id() {
-        return contract_Detail_Id;
+    public Integer getContractDetailId() {
+        return contractDetailId;
     }
 
-    public void setContract_Detail_Id(Integer contract_Detail_Id) {
-        this.contract_Detail_Id = contract_Detail_Id;
+    public void setContractDetailId(Integer contract_Detail_Id) {
+        this.contractDetailId = contract_Detail_Id;
     }
 
     public int getQuantity() {

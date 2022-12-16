@@ -6,23 +6,23 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
     @Id
-    private String userName;
+    private Integer userName;
 
     private String password;
 
     public User() {
     }
 
-    public User(String userName, String password) {
+    public User(Integer userName, String password) {
         this.userName = userName;
         this.password = password;
     }
 
-    public String getUserName() {
+    public Integer getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(Integer userName) {
         this.userName = userName;
     }
 

@@ -1,6 +1,9 @@
 package com.example.casestudy_ss1.model;
 
+import com.example.casestudy_ss1.model.person.Employee;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "education_degree")
@@ -13,6 +16,8 @@ public class EducationDegree {
 
     public EducationDegree() {
     }
+    @OneToMany(mappedBy = "education_degree", cascade = CascadeType.REMOVE)
+    private Set<Employee> employees;
 
     public EducationDegree(Integer education_Degree_Id, String education_Degree_Name) {
         this.educationDegreeId = education_Degree_Id;

@@ -1,5 +1,9 @@
 package com.example.casestudy_ss1.model.contract;
 
+import com.example.casestudy_ss1.model.facitily.Service;
+import com.example.casestudy_ss1.model.person.Customer;
+import com.example.casestudy_ss1.model.person.Employee;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -9,66 +13,117 @@ import java.util.Set;
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer contract_Id;
+    private Integer contractId;
 
-    private Date contract_Start_Date;
-    private Date contract_End_Date;
-    private double contract_Deposit;
-    private double contract_Total_Money;
+    private Date contractStartDate;
+    private Date contractEndDate;
+    private double contractDeposit;
+    private double contractTotalMoney;
 
-    @OneToMany
-    @JoinColumn(name = "contract_Id",referencedColumnName = "contract_Detail_Id");
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.REMOVE)
     private Set<ContractDetail> contractDetails;
 
+    @ManyToOne(targetEntity = Service.class, cascade = CascadeType.REMOVE)
+    private Service service;
+
+    @ManyToOne(targetEntity = Customer.class, cascade = CascadeType.REMOVE)
+    private Customer customer;
+
+    @ManyToOne(targetEntity = Employee.class, cascade = CascadeType.REMOVE)
+    private Employee employee;
+
+    public Contract(Integer contractId, Date contractStartDate, Date contractEndDate, double contractDeposit, double contractTotalMoney, Set<ContractDetail> contractDetails, Service service, Customer customer, Employee employee) {
+        this.contractId = contractId;
+        this.contractStartDate = contractStartDate;
+        this.contractEndDate = contractEndDate;
+        this.contractDeposit = contractDeposit;
+        this.contractTotalMoney = contractTotalMoney;
+        this.contractDetails = contractDetails;
+        this.service = service;
+        this.customer = customer;
+        this.employee = employee;
+    }
+
+    public Set<ContractDetail> getContractDetails() {
+        return contractDetails;
+    }
+
+    public void setContractDetails(Set<ContractDetail> contractDetails) {
+        this.contractDetails = contractDetails;
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     public Contract(Integer contract_Id, Date contract_Start_Date, Date contract_End_Date, double contract_Deposit, double contract_Total_Money) {
-        this.contract_Id = contract_Id;
-        this.contract_Start_Date = contract_Start_Date;
-        this.contract_End_Date = contract_End_Date;
-        this.contract_Deposit = contract_Deposit;
-        this.contract_Total_Money = contract_Total_Money;
+        this.contractId = contract_Id;
+        this.contractStartDate = contract_Start_Date;
+        this.contractEndDate = contract_End_Date;
+        this.contractDeposit = contract_Deposit;
+        this.contractTotalMoney = contract_Total_Money;
     }
 
     public Contract() {
     }
 
-    public Integer getContract_Id() {
-        return contract_Id;
+    public Integer getContractId() {
+        return contractId;
     }
 
-    public void setContract_Id(Integer contract_Id) {
-        this.contract_Id = contract_Id;
+    public void setContractId(Integer contract_Id) {
+        this.contractId = contract_Id;
     }
 
-    public Date getContract_Start_Date() {
-        return contract_Start_Date;
+    public Date getContractStartDate() {
+        return contractStartDate;
     }
 
-    public void setContract_Start_Date(Date contract_Start_Date) {
-        this.contract_Start_Date = contract_Start_Date;
+    public void setContractStartDate(Date contract_Start_Date) {
+        this.contractStartDate = contract_Start_Date;
     }
 
-    public Date getContract_End_Date() {
-        return contract_End_Date;
+    public Date getContractEndDate() {
+        return contractEndDate;
     }
 
-    public void setContract_End_Date(Date contract_End_Date) {
-        this.contract_End_Date = contract_End_Date;
+    public void setContractEndDate(Date contract_End_Date) {
+        this.contractEndDate = contract_End_Date;
     }
 
-    public double getContract_Deposit() {
-        return contract_Deposit;
+    public double getContractDeposit() {
+        return contractDeposit;
     }
 
-    public void setContract_Deposit(double contract_Deposit) {
-        this.contract_Deposit = contract_Deposit;
+    public void setContractDeposit(double contract_Deposit) {
+        this.contractDeposit = contract_Deposit;
     }
 
-    public double getContract_Total_Money() {
-        return contract_Total_Money;
+    public double getContractTotalMoney() {
+        return contractTotalMoney;
     }
 
-    public void setContract_Total_Money(double contract_Total_Money) {
-        this.contract_Total_Money = contract_Total_Money;
+    public void setContractTotalMoney(double contract_Total_Money) {
+        this.contractTotalMoney = contract_Total_Money;
     }
 }

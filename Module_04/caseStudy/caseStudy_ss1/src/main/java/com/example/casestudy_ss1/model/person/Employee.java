@@ -1,14 +1,20 @@
 package com.example.casestudy_ss1.model.person;
 
+import com.example.casestudy_ss1.model.Division;
+import com.example.casestudy_ss1.model.EducationDegree;
+import com.example.casestudy_ss1.model.Position;
+import com.example.casestudy_ss1.model.contract.Contract;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String employeeId;
+    private Integer employeeId;
 
     private String employeeName;
     private Date employeeBirthday;
@@ -20,7 +26,19 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String employeeId, String employeeName, Date employeeBirthday, String employeeAddress, String employeeIdCard, String employeePhone, String employeeEmail) {
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
+    private Set<Contract> contracts;
+
+    @ManyToOne(targetEntity = Position.class, cascade = CascadeType.REMOVE)
+    private Position position;
+
+    @ManyToOne(targetEntity = EducationDegree.class, cascade = CascadeType.REMOVE)
+    private EducationDegree educationDegree;
+
+    @ManyToOne(targetEntity = Division.class, cascade = CascadeType.REMOVE)
+    private Division division;
+
+    public Employee(int employeeId, String employeeName, Date employeeBirthday, String employeeAddress, String employeeIdCard, String employeePhone, String employeeEmail) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
@@ -30,11 +48,11 @@ public class Employee {
         this.employeeEmail = employeeEmail;
     }
 
-    public String getEmployeeId() {
+    public Integer getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
 

@@ -1,6 +1,9 @@
 package com.example.casestudy_ss1.model;
 
+import com.example.casestudy_ss1.model.facitily.Service;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "service_type")
@@ -10,6 +13,23 @@ public class ServiceType {
     private Integer serviceTypeId;
 
     private String serviceTypeName;
+
+    @OneToMany(mappedBy = "service_type", cascade = CascadeType.REMOVE)
+    private Set<Service> services;
+
+    public ServiceType(Integer serviceTypeId, String serviceTypeName, Set<Service> services) {
+        this.serviceTypeId = serviceTypeId;
+        this.serviceTypeName = serviceTypeName;
+        this.services = services;
+    }
+
+    public Set<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(Set<Service> services) {
+        this.services = services;
+    }
 
     public ServiceType() {
     }

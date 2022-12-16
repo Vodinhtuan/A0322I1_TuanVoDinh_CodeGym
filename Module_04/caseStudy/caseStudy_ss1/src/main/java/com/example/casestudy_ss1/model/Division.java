@@ -1,6 +1,9 @@
 package com.example.casestudy_ss1.model;
 
+import com.example.casestudy_ss1.model.person.Employee;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "division")
@@ -13,6 +16,8 @@ public class Division {
 
     public Division() {
     }
+    @OneToMany(mappedBy = "division", cascade = CascadeType.REMOVE)
+    private Set<Employee> employees;
 
     public Division(Integer division_Id, String division_Name) {
         this.divisionId = division_Id;
