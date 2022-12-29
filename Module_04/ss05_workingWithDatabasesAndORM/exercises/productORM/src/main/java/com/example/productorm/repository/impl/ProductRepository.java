@@ -1,8 +1,7 @@
-package com.example.finalmusic.repository.impl;
+package com.example.productorm.repository.impl;
 
-import com.example.finalmusic.model.Music;
-import com.example.finalmusic.repository.IMusicRepository;
-import com.example.finalmusic.repository.IRepository;
+import com.example.productorm.model.Product;
+import com.example.productorm.repository.IProductRepository;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,9 +10,8 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
-
 @Repository
-public class IRepotoryImpl implements IMusicRepository {
+public class ProductRepository implements IProductRepository {
     private static SessionFactory sessionFactory;
     private static EntityManager entityManager;
 
@@ -29,29 +27,29 @@ public class IRepotoryImpl implements IMusicRepository {
     }
 
     @Override
-    public List<Music> findAll() {
-        String queryStr = "Select s from Music as s";
-        TypedQuery<Music> query = entityManager.createQuery(queryStr, Music.class);
+    public List<Product> findAll() {
+        String queryStr = "Select s from Product as s";
+        TypedQuery<Product> query = entityManager.createQuery(queryStr, Product.class);
         return query.getResultList();
     }
 
     @Override
-    public void save(Music music) {
-        entityManager.persist(music);
+    public void save(Product product) {
+        entityManager.persist(product);
     }
 
     @Override
-    public Music findById(int id) {
-        return entityManager.find(Music.class, id);
+    public Product findById(int id) {
+        return entityManager.find(Product.class, id);
     }
 
     @Override
-    public void update(Music music) {
-        entityManager.merge(music);
+    public void update(Product product) {
+        entityManager.merge(product);
     }
 
     @Override
-    public void delete(Music music) {
-        entityManager.remove(music);
+    public void delete(Product product) {
+        entityManager.remove(product);
     }
 }
