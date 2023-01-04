@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class IServiceImpl implements IMusicService {
+public class MusicService implements IMusicService {
     @Autowired
     private IRepository iRepository;
 

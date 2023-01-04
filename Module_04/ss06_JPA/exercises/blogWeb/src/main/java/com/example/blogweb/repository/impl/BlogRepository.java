@@ -12,7 +12,7 @@ import java.util.List;
 
 @Transactional
 @Repository
-public class BlogRepositoryImpl implements IBlogRepository {
+public class BlogRepository implements IBlogRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

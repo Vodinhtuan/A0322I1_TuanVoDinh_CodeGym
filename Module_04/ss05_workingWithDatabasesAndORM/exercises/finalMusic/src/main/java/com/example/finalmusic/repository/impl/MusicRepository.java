@@ -2,7 +2,6 @@ package com.example.finalmusic.repository.impl;
 
 import com.example.finalmusic.model.Music;
 import com.example.finalmusic.repository.IMusicRepository;
-import com.example.finalmusic.repository.IRepository;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,7 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class IRepotoryImpl implements IMusicRepository {
+public class MusicRepository implements IMusicRepository {
     private static SessionFactory sessionFactory;
     private static EntityManager entityManager;
 

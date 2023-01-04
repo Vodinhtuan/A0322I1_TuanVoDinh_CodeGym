@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class BlogServiceImpl implements IBlogService {
+public class BlogService implements IBlogService {
 
     @Autowired
     IBlogRepository blogRepository;
