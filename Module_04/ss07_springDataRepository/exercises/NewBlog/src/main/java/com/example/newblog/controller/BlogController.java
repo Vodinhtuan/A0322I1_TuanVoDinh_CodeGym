@@ -2,7 +2,7 @@ package com.example.newblog.controller;
 
 import com.example.newblog.model.Blog;
 import com.example.newblog.repository.ICategoryRepository;
-import com.example.newblog.service.impl.BlogServiceImpl;
+import com.example.newblog.service.impl.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/blog")
 public class BlogController {
     @Autowired
-    BlogServiceImpl blogService;
+    BlogService blogService;
 
     @Autowired
     ICategoryRepository categoryRepository;
