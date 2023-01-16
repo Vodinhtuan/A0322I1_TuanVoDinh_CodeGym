@@ -24,7 +24,7 @@ public class BlogService implements IBlogService {
 
     @Override
     public List<Blog> findBlogById(int id) {
-        Optional<Blog> optionalBlog = iBlogRepository.findById(id); //Iterable: dùng để sắp xếp;
+        Optional<Blog> optionalBlog = iBlogRepository.findById(id);
         List<Blog> blogList = new ArrayList<>();
         for (Blog b: blogList) {
             blogList.add(b);
@@ -34,7 +34,7 @@ public class BlogService implements IBlogService {
 
     @Override
     public List<Blog> getList() {
-        Iterable<Blog> iterable = iBlogRepository.findAll(); //Iterable: dùng để sắp xếp;
+        Iterable<Blog> iterable = iBlogRepository.findAll();
         List<Blog> blogListList = new ArrayList<>();
         for (Blog b: iterable) {
             blogListList.add(b);
