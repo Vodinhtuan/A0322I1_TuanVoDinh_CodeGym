@@ -23,7 +23,7 @@ public class ProductController {
     @GetMapping()
     public String showList(Model model, @RequestParam(value = "page", defaultValue = "3") int page){
         Sort sort = Sort.by("name");
-        model.addAttribute("products", service.findAll(PageRequest.of(page, 3, sort)));
+        model.addAttribute("products", service.getAll());
         return "list";
     }
 
@@ -49,6 +49,12 @@ public class ProductController {
     public String view (@PathVariable int id, Model model){
         model.addAttribute("product", service.findById(id));
         return "detail";
+    }
+    @GetMapping("/update/{id}")
+    public String updatePage(@PathVariable int id, Model model){
+        Product product = service.findById(id);
+        model.addAttribute("product", product);
+        return "update";
     }
 
     @PostMapping("/update/{id}")

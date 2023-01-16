@@ -6,12 +6,12 @@
 </head>
 <body>
 <h1>Edit Product</h1>
-<th:if test="${error != null}">
+<!--<th:if test="${error != null}">
     <h2 style="color: red">${error}</h2>
-</th:if>
+</th:if>-->
 
-<a th:href="@{/product}">Return List</a>
-<form th:object="${}" method="post">
+<a th:action="@{/product/update}" th:href="@{/product}">Return List</a>
+<form th:object="${product}" method="post">
     <table>
         <tr>
             <td>Name Product</td>
@@ -47,7 +47,7 @@
         </tr>
     </table>
     <input type="hidden" name="action" value="update" />
-    <input type="hidden" name="id" value="${product.id}" />
+    <!--<input type="hidden" name="id" value="${product.id}" />-->
 </form>
 </body>
 </html>

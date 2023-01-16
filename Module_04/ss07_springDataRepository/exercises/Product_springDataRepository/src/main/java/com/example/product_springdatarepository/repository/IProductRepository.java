@@ -7,11 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "select * from product",nativeQuery = true)
     Page<Product> findAll (Pageable pageable);
-
-    Product findByNameContaining ( String nameProduct);
+    @Query(value = "select * from product s where s.name like %:keyword% or s.description like %:keyword%")
+    List<Product> findByNameContainingOrDescriptionContaining (String nameProduct);
+    //Product findByNameContaining ( String nameProduct);
 }

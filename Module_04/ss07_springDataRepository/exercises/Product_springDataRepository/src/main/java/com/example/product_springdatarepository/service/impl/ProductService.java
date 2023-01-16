@@ -28,8 +28,16 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product findByName(String name) {
-        return repository.findByNameContaining(name);
+    public List<Product> findByName(String name) {
+        if (name != null){
+            Iterable<Product> iterable = repository.findByNameContaining(name);
+            List<Product> productList = new ArrayList<>();
+            for(Product p: iterable){
+                productList.add(p);
+            }
+            return productList;
+        }
+        return repository.findAll();
     }
 
     @Override
