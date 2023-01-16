@@ -2,28 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create Blog</title>
+    <title>Create Product</title>
 </head>
 <body>
-<h1>Add new blog</h1>
-<a th:href="@{/blog/list}">Return List</a>
-<form th:action="@{/blog/create}" th:object="${blog}" method="POST" novalidate="novalidate">
+<h1>Add new product</h1>
+<a th:href="@{/prouct}">Return List</a>
+<form th:action="@{/product/create}" th:object="${product}" method="POST" novalidate="novalidate">
     <table border="1">
         <tr>
-            <td>Name Blog</td>
-            <td><input type="text" th:field="*{nameBlog}" /></td>
+            <td>Name Product</td>
+            <td><input type="text" th:field="*{name}" /></td>
         </tr>
         <tr>
-            <td>Title</td>
-            <td><input type="text" th:field="*{title}" /></td>
+            <td>Price</td>
+            <td><input type="text" th:field="*{price}" /></td>
         </tr>
         <tr>
-            <td>Content</td>
-            <td><input type="text" th:field="*{content}" /></td>
+            <td>Description</td>
+            <td><input type="text" th:field="*{description}" /></td>
         </tr>
         <tr>
-            <td>Category</td>
-            <td><input type="text" th:field="*{category}" /></td>
+            <td>Manufacture</td>
+            <td><input type="text" th:field="*{manufacture}" /></td>
         </tr>
         <tr>
             <td>

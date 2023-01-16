@@ -11,6 +11,7 @@ public interface IProductService {
     void save (Product product);
     void delete (Integer id);
     Product findByName(String name);
+    Product findById (Integer id);
     List<Product> getAll();
     Page<Product> findAll (Pageable pageable);
 }

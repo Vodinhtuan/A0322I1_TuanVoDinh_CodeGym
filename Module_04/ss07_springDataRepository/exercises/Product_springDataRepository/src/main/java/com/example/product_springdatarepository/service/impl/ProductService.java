@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProductRepository implements IProductService {
+public class ProductService implements IProductService {
     @Autowired
     private IProductRepository repository;
 
@@ -30,6 +30,11 @@ public class ProductRepository implements IProductService {
     @Override
     public Product findByName(String name) {
         return repository.findByNameContaining(name);
+    }
+
+    @Override
+    public Product findById(Integer id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override

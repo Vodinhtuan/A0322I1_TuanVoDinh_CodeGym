@@ -8,10 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -31,6 +30,37 @@ public class ProductController {
     @GetMapping("/create")
     public ModelAndView createProductPage(){
         return new ModelAndView("create", "product", new Product());
+    }
+
+    @PostMapping("/create")
+    public String createProduct(@ModelAttribute Product product, RedirectAttributes redirectAttributes){
+        service.save(product);
+        redirectAttributes.addFlashAttribute("message", "Create Product: " + product.getName() + " done!");
+        return "redirect:/product";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id){
+        service.delete(id);
+        return"redirect:/product";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String view (@PathVariable int id, Model model){
+        model.addAttribute("product", service.findById(id));
+        return "detail";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateBlog(@ModelAttribute Product product, RedirectAttributes redirectAttributes){
+        service.save(product);
+        redirectAttributes.addFlashAttribute("message", "Update Product: " + product.getName() + " done!");
+        return "redirect:/product";
+    }
+
+    @GetMapping("/search")
+    public ModelAndView searchByName(@RequestParam(name = "txtSearch") String name){
+        return new ModelAndView("list", "products", service.findByName(name));
     }
 
 }
