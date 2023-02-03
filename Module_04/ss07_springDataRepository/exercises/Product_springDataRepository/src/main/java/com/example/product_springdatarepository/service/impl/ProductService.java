@@ -29,12 +29,12 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> findByName(String name) {
-        if (name != null){
-            Iterable<Product> iterable = repository.findByNameContaining(name);
-            List<Product> productList = new ArrayList<>();
-            for(Product p: iterable){
+        if (name != null){/*for(Product p: iterable){
                 productList.add(p);
-            }
+            }*/
+            //Iterable<Product> iterable = repository.findByNameContaining(name);
+            List<Product> productList = new ArrayList<>();
+
             return productList;
         }
         return repository.findAll();

@@ -38,7 +38,7 @@ public class FormController {
     @PostMapping("/create")
     public String checkValidation (@Valid @ModelAttribute("user")User user, BindingResult bindingResult){
         new PhoneNumberValidator().validate(user, bindingResult);
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasErrors()){
             return "/index";
         }
         else {

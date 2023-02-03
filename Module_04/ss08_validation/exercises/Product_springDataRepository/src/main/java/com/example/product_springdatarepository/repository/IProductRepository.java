@@ -14,9 +14,9 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "select * from product",nativeQuery = true)
     Page<Product> findAll (Pageable pageable);
+//    @Query(value = "select * from product s where s.name like ?1;",nativeQuery = true)
+//    List<Product> findByNameContainingOrDescriptionContaining (String nameProduct);
+    List<Product> findAllByNameProductContains(String nameProduct);
 
-    @Query(value = "select * from product s where s.name like %:keyword% or s.description like %:keyword%",nativeQuery = true)
-    List<Product> findByNameContainingOrDescriptionContaining (String nameProduct);
 
-    Product findByNameContaining ( String nameProduct);
 }
