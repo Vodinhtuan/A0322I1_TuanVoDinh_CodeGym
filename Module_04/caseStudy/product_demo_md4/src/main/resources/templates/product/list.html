@@ -295,6 +295,7 @@
 </div>
 </body>
 </html>
+
 <script>
     $("#search").keyup(function (event) {
         let keycode = (event.keyCode ? event.keyCode : event.which);
@@ -317,6 +318,8 @@
         let val = $(".delete").data("id");
         $("#deleteVal").val(val);
     })
+
+
     $(".edit").click(function () {
         $("input[name='id']").val($(this).data('id'));
         $("input[name='name']").val($(this).data('name'));
@@ -366,6 +369,7 @@
         }
     }
 </script>
+
 <script th:inline="javascript">
     $(document).ready(function () {
         if ([[${isError}]]) {
