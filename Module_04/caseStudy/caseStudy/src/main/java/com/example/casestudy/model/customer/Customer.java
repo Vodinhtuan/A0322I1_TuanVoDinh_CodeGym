@@ -1,8 +1,10 @@
 package com.example.casestudy.model.customer;
 
-import com.example.casestudy_ss1.model.CustomerType;
+import com.example.casestudy.model.customer.Customer;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -16,6 +18,8 @@ public class Customer {
     private boolean customerGender;
     private String customerIdCard;
     private String customerPhone;
+    @NotBlank(message = "Email is mandatory")
+    @Email
     private String customerEmail;
 
     public Customer() {

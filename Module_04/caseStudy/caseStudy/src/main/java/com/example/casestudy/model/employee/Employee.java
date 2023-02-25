@@ -1,11 +1,9 @@
 package com.example.casestudy.model.employee;
 
-import com.example.casestudy_ss1.model.Division;
-import com.example.casestudy_ss1.model.EducationDegree;
-import com.example.casestudy_ss1.model.Position;
-import com.example.casestudy_ss1.model.User;
+import com.example.casestudy.model.security.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Date;
 
 @Entity
@@ -20,6 +18,7 @@ public class Employee {
     private String employeeAddress;
     private String employeeIdCard;
     private String employeePhone;
+    @Email
     private String employeeEmail;
 
     @ManyToOne
@@ -54,48 +53,6 @@ public class Employee {
         this.position = position;
         this.educationDegree = educationDegree;
         this.user = user;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Division getDivision() {
-        return division;
-    }
-
-    public void setDivision(Division division) {
-        this.division = division;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public EducationDegree getEducationDegree() {
-        return educationDegree;
-    }
-
-    public void setEducationDegree(EducationDegree educationDegree) {
-        this.educationDegree = educationDegree;
-    }
-
-    public Employee(Integer employeeId, String employeeName, Date employeeBirthday, String employeeAddress, String employeeIdCard, String employeePhone, String employeeEmail) {
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
-        this.employeeBirthday = employeeBirthday;
-        this.employeeAddress = employeeAddress;
-        this.employeeIdCard = employeeIdCard;
-        this.employeePhone = employeePhone;
-        this.employeeEmail = employeeEmail;
     }
 
     public Integer getEmployeeId() {
@@ -152,5 +109,37 @@ public class Employee {
 
     public void setEmployeeEmail(String employeeEmail) {
         this.employeeEmail = employeeEmail;
+    }
+
+    public Division getDivision() {
+        return division;
+    }
+
+    public void setDivision(Division division) {
+        this.division = division;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public EducationDegree getEducationDegree() {
+        return educationDegree;
+    }
+
+    public void setEducationDegree(EducationDegree educationDegree) {
+        this.educationDegree = educationDegree;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

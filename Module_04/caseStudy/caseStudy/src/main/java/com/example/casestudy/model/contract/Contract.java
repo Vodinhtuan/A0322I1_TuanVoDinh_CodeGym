@@ -1,8 +1,9 @@
 package com.example.casestudy.model.contract;
 
-import com.example.casestudy_ss1.model.facitily.Service;
-import com.example.casestudy_ss1.model.person.Customer;
-import com.example.casestudy_ss1.model.person.Employee;
+import com.example.casestudy.model.customer.Customer;
+import com.example.casestudy.model.employee.Employee;
+import com.example.casestudy.model.service_model.ServiceClass;
+
 
 import javax.persistence.*;
 import java.util.Date;
@@ -29,12 +30,12 @@ public class Contract {
 
     @ManyToOne
     @JoinColumn (name = "service_id")
-    private Service service;
+    private ServiceClass service;
 
     public Contract() {
     }
 
-    public Contract(Integer contractId, Date contractStartDate, Date contractEndDate, double contractDeposit, double contractTotalMoney, Employee employee, Customer customer, Service service) {
+    public Contract(Integer contractId, Date contractStartDate, Date contractEndDate, double contractDeposit, double contractTotalMoney, Employee employee, Customer customer, ServiceClass service) {
         this.contractId = contractId;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
@@ -101,11 +102,11 @@ public class Contract {
         this.customer = customer;
     }
 
-    public Service getService() {
+    public ServiceClass getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    public void setService(ServiceClass service) {
         this.service = service;
     }
 }
