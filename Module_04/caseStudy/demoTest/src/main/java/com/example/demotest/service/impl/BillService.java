@@ -8,8 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class BillService implements IBillService {
     @Autowired
@@ -26,6 +24,11 @@ public class BillService implements IBillService {
         return billRepository.findAll(pageable);
     }
 
+    /*@Override
+    public Page<Bill> findAll(Pageable pageable) {
+        return billRepository.findAll(pageable);
+    }*/
+
     @Override
     public void delete(Integer id) {
         billRepository.deleteById(id);
@@ -41,5 +44,9 @@ public class BillService implements IBillService {
         return billRepository.findById(id).get();
     }
 
+    @Override
+    public Page<Bill> getByKeyword(String keyword, Pageable pageable) {
+        return billRepository.findByKeyword(keyword, pageable);
+    }
 
 }

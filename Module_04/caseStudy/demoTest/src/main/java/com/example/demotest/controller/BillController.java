@@ -6,18 +6,12 @@ import com.example.demotest.model.ProductType;
 import com.example.demotest.service.IBillService;
 import com.example.demotest.service.IProductService;
 import com.example.demotest.service.IProductTypeService;
-//import com.example.demotest.validator.DateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -31,9 +25,19 @@ public class BillController {
     @Autowired
     private IProductTypeService productTypeService;
 
-    @GetMapping("/list")
+    /*@GetMapping("/list")
     public ModelAndView showList(Pageable pageable){
         return new ModelAndView("home", "bills", billService.findAll(pageable));
+    }*/
+
+    @GetMapping("/list")
+    public String home(Model model, String keyword, Pageable pageable) {
+        if(keyword!=null) {
+            model.addAttribute("bills", billService.getByKeyword(keyword, pageable));
+        }else {
+            model.addAttribute("bills", billService.findAll(pageable));
+        }
+        return "home";
     }
 
     @GetMapping("/create")

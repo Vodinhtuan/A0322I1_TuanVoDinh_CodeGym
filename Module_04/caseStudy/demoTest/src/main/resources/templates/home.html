@@ -24,7 +24,15 @@
     <link rel="stylesheet" href="../static/myCSS.css">
 </head>
 <body>
+
 <div class="container my-2">
+
+    <form th:action="@{/bill/list}" method="get">
+        <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Quantity or Description" size="50" >
+        <button type="submit" class="btn btn-outline-info" >Search</button>
+        <button type="reset" class="btn btn-outline-info" >Reset</button>
+    </form>
+
     <div class="card">
         <div class="card-body">
             <div th:switch="${bills}" class="container my-5">
@@ -40,6 +48,7 @@
                             <tr>
                                 <th>Publish Date</th>
                                 <th>Quantity</th>
+                                <th>Description</th>
                                 <th>Product Name</th>
                                 <th>Product Type</th>
                                 <th>Update</th>
@@ -51,6 +60,7 @@
                             <tr th:each="bill : ${bills}">
                                 <td th:text="${bill.publishDate}"></td>
                                 <td th:text="${bill.quantity}"></td>
+                                <td th:text="${bill.description}"></td>
                                 <td th:text="${bill.product.productName}"></td>
                                 <td th:text="${bill.product.productType.typeProduct}"></td>
 
@@ -61,7 +71,8 @@
                                         type="button"  title="Detail"
                                         data-toggle="modal" data-target="#detail"
                                         th:data-id="${bill.billId}"
-                                        th:data-name="${bill.quantity}"
+                                        th:data-quantity="${bill.quantity}"
+                                        th:data-description="${bill.description}"
                                         th:data-product="${bill.product.productName}"
                                         class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i>
                                 </a></td>
@@ -70,7 +81,8 @@
                                         type="button"  title="Delete"
                                         data-toggle="modal" data-target="#confirm"
                                         th:data-id="${bill.billId}"
-                                        th:data-name="${bill.quantity}"
+                                        th:data-quantity="${bill.quantity}"
+                                        th:data-description="${bill.description}"
                                         th:data-product="${bill.product.productName}"
                                         th:href="@{/students/delete/{id}(id=${bill.billId})}"
                                         class="btn btn-primary">
@@ -124,7 +136,8 @@
                 <div class="row">
                     <div class="col-8">
                         <p class="index"></p>
-                        <p class="name"></p>
+                        <p class="quantity"></p>
+                        <p class="description"></p>
                         <p class="product"></p>
                     </div>
                 </div>
@@ -148,7 +161,8 @@
                 <div class="row">
                     <div class="col-8">
                             <p class="index"></p>
-                            <p class="name"></p>
+                            <p class="quantity"></p>
+                            <p class="description"></p>
                             <p class="product"></p>
                     </div>
                 </div>
@@ -167,18 +181,20 @@
     $('#confirm').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var modal = $(this)
-        modal.find('.index').text('Mã hóa đơn:' + button.data('id'));
-        modal.find('.name').text('Số lượng sản phẩm:' + button.data('name'));
-        modal.find('.product').text('Tên sản phẩm:' + button.data('product'));
+        modal.find('.index').text('Mã hóa đơn: ' + button.data('id'));
+        modal.find('.quantity').text('Số lượng sản phẩm: ' + button.data('quantity'));
+        modal.find('.description').text('Mô tả sản phẩm: ' + button.data('description'));
+        modal.find('.product').text('Tên sản phẩm: ' + button.data('product'));
         modal.find('.modal-footer a').attr("href", "/bill/delete/" + button.data('id'));
     });
 
     $('#detail').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var modal = $(this)
-        modal.find('.index').text('Mã hóa đơn:' + button.data('id'));
-        modal.find('.name').text('Số lượng sản phẩm:' + button.data('name'));
-        modal.find('.product').text('Tên sản phẩm:' + button.data('product'));
+        modal.find('.index').text('Mã hóa đơn: ' + button.data('id'));
+        modal.find('.quantity').text('Số lượng sản phẩm: ' + button.data('quantity'));
+        modal.find('.description').text('Mô tả sản phẩm: ' + button.data('description'));
+        modal.find('.product').text('Tên sản phẩm: ' + button.data('product'));
         modal.find('.modal-footer a').attr("href", "/bill/detail/" + button.data('id'));
     });
 </script>

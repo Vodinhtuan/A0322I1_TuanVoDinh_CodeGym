@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
@@ -20,6 +21,9 @@ public class Bill {
     @Min(value = 1, message = "The number must be greater than 0 and cannot be blank.")
     private int quantity;
 
+    @NotBlank(message = "Description is mandatory")
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
@@ -27,10 +31,11 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(Integer billId, LocalDate publishDate, int quantity, Product product) {
+    public Bill(Integer billId, LocalDate publishDate, int quantity, String description, Product product) {
         this.billId = billId;
         this.publishDate = publishDate;
         this.quantity = quantity;
+        this.description = description;
         this.product = product;
     }
 
@@ -56,6 +61,14 @@ public class Bill {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Product getProduct() {

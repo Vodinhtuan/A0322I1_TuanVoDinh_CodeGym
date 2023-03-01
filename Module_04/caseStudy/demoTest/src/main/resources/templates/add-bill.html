@@ -17,8 +17,10 @@
 </head>
 <body>
 <div class="container my-5">
-    <a href="/bill/list">Return List</i></a>
-    <h3> New Bill</h3>
+    <form th:action="@{/bill/list}" method="get">
+        <button type="submit" class="btn btn-outline-info">Return List</button>
+    </form>
+        <h3> New Bill</h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
@@ -31,7 +33,6 @@
                             <span th:if="${#fields.hasErrors('publishDate')}" th:errors="*{publishDate}" class="text-danger"></span>
                         </div>
 
-
                         <div class="form-group col-md-8">
                             <label for="name" class="col-form-label">Quantity</label> <input
                                 type="number" th:field="*{quantity}" class="form-control" id="name"
@@ -39,6 +40,14 @@
                                 th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"
                                 class="text-danger"></span>
                         </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-form-label">Description</label>
+                            <input type="text" class="form-control" id="" th:field="*{description}">
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                                    class="text-danger"></span>
+                        </div>
+
                         <div class="form-group col-md-8">
                             <label class="col-form-label">Product</label>
                             <select class="form-control" th:field="*{product}">
