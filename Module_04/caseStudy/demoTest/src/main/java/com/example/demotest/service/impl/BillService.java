@@ -24,11 +24,6 @@ public class BillService implements IBillService {
         return billRepository.findAll(pageable);
     }
 
-    /*@Override
-    public Page<Bill> findAll(Pageable pageable) {
-        return billRepository.findAll(pageable);
-    }*/
-
     @Override
     public void delete(Integer id) {
         billRepository.deleteById(id);

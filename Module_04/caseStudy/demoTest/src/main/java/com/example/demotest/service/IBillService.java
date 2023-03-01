@@ -2,7 +2,6 @@ package com.example.demotest.service;
 
 import com.example.demotest.model.Bill;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 public interface IBillService {
@@ -13,5 +12,5 @@ public interface IBillService {
 
     Bill findById(Integer id);
 
-    Page<Bill> getByKeyword(String keyword,Pageable pageable);
+    Page<Bill> getByKeyword(String keyword, Pageable pageable);
 }

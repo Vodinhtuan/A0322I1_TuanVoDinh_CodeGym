@@ -1,8 +1,6 @@
 package com.example.demotest.controller;
 
 import com.example.demotest.model.Bill;
-import com.example.demotest.model.Product;
-import com.example.demotest.model.ProductType;
 import com.example.demotest.service.IBillService;
 import com.example.demotest.service.IProductService;
 import com.example.demotest.service.IProductTypeService;
@@ -31,17 +29,13 @@ public class BillController {
     }*/
 
     @GetMapping("/list")
-    public String home(Model model, String keyword, Pageable pageable) {
-        if(keyword!=null) {
-            model.addAttribute("bills", billService.getByKeyword(keyword, pageable));
-        }else {
-            model.addAttribute("bills", billService.findAll(pageable));
-        }
+    public String home(Model model, Pageable pageable, @RequestParam(value = "keyword", defaultValue = "") String keyword){
+        model.addAttribute("bills", billService.getByKeyword(keyword, pageable));
         return "home";
     }
 
     @GetMapping("/create")
-    public String showFormCreate(Model model){
+    public String showFormCreate(Model model) {
         model.addAttribute("bill", new Bill());
         model.addAttribute("products", productService.listAll());
         model.addAttribute("productTypes", productTypeService.listAll());
@@ -50,13 +44,13 @@ public class BillController {
     }
 
     @PostMapping("/add")
-    public String addBill(@Valid Bill bill, BindingResult result, Model model, ProductType productType, Product product){
+    public String addBill(@Valid Bill bill, BindingResult result, Model model) {
         model.addAttribute("typeProducts", productTypeService.listAll());
         model.addAttribute("products", productService.listAll());
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             model.addAttribute("productTypes", productTypeService.listAll());
             return "add-bill";
-        }else {
+        } else {
             billService.Save(bill);
         }
         return "redirect:/bill/list";
@@ -85,7 +79,7 @@ public class BillController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteBill(@PathVariable("id") Integer id){
+    public String deleteBill(@PathVariable("id") Integer id) {
         billService.delete(id);
         return "redirect:/bill/list";
     }
