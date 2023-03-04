@@ -47,21 +47,12 @@
                         </div>
 
                         <div class="form-group col-md-8">
-                            <input th:value="1" value="1" type="radio" class="form-check-input" id="flexRadioDefault1"
-                                   name="product" th:field="*{product.productName}">
-                            <label class="form-check-label" for="flexRadioDefault1">Car</label>
-                        </div>
-
-                        <div class="form-group col-md-8">
-                            <input th:value="2" value="2" type="radio" class="form-check-input" id="flexRadioDefault2"
-                                   name="product" th:field="*{product.productName}">
-                            <label class="form-check-label" for="flexRadioDefault2">Boat</label>
-                        </div>
-
-                        <div class="form-group col-md-8">
-                            <input th:value="3" value="3" type="radio" class="form-check-input" id="flexRadioDefault3"
-                                   name="product" th:field="*{product.productName}">
-                            <label class="form-check-label" for="flexRadioDefault3">Helicopter</label>
+                            <label class="col-form-label">Product</label>
+                            <select class="form-control" th:field="*{product}">
+                                <option th:each="c: ${product}"
+                                        th:text="${c.productName}" th:value="${c.productId}">
+                                </option>
+                            </select>
                         </div>
 
                         <div class="form-group col-md-8">
