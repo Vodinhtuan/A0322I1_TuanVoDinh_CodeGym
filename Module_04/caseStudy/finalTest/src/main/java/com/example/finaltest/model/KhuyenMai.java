@@ -1,6 +1,7 @@
 package com.example.finaltest.model;
 
-import com.example.finaltest.validator.EXPDateValid;
+import com.example.finaltest.validator.IFormatBeginDay;
+import com.example.finaltest.validator.IFormatEndDay;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -15,19 +18,22 @@ public class KhuyenMai {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    @NotBlank(message = "Tieu de is mandatory")
     private String tieuDe;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @IFormatBeginDay
     private LocalDate batDau;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @EXPDateValid
+    @IFormatEndDay
     private LocalDate ketThuc;
 
+    @NotNull
     @Min(value = 10000, message = "The number must be greater than 10000 and cannot be blank.")
     private Double mucGiam;
 
+    @NotBlank(message = "Chi tiet is mandatory")
     private String chiTiet;
 
     public KhuyenMai() {

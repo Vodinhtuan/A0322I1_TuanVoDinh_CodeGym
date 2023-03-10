@@ -61,7 +61,7 @@ public class BillController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Bill bill = billService.findById(id);
         model.addAttribute("productType", productTypeService.listAll());
-        model.addAttribute("product", productService.listAll());
+        model.addAttribute("products", productService.listAll());
         model.addAttribute("bill", bill);
         return "update-bill";
     }
@@ -71,7 +71,7 @@ public class BillController {
         bill.setBillId((int) id);
         if (result.hasErrors()) {
             model.addAttribute("productType", productTypeService.listAll());
-            model.addAttribute("product", productService.listAll());
+            model.addAttribute("products", productService.listAll());
             return "update-bill";
         }
         billService.Save(bill);

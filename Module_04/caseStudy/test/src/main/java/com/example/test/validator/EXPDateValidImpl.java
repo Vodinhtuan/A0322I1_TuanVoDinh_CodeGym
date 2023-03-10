@@ -1,4 +1,4 @@
-package com.example.finaltest.validator;
+package com.example.test.validator;
 
 import org.springframework.beans.factory.annotation.Configurable;
 

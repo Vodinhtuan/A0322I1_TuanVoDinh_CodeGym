@@ -30,11 +30,13 @@
                         <div class="form-group col-md-8">
                             <label for="tieude" class="col-form-label">Tiêu đề </label>
                             <input type="text" class="form-control" id="tieude" th:field="*{tieuDe}">
+                            <span th:if="${#fields.hasErrors('tieuDe')}" th:errors="*{tieuDe}" class="text-danger"></span>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="date" class="col-form-label">Ngày bắt đầu</label>
                             <input type="date" class="form-control" id="date" th:field="*{batDau}">
+                            <span th:if="${#fields.hasErrors('batDau')}" th:errors="*{batDau}" class="text-danger"></span>
                         </div>
 
                         <div class="form-group col-md-8">
@@ -54,6 +56,7 @@
                         <div class="form-group col-md-8">
                             <label for="chitiet" class="col-form-label">Chi tiết</label>
                             <input type="text" class="form-control" id="chitiet" th:field="*{chiTiet}">
+                            <span th:if="${#fields.hasErrors('chiTiet')}" th:errors="*{chiTiet}" class="text-danger"></span>
                         </div>
 
 

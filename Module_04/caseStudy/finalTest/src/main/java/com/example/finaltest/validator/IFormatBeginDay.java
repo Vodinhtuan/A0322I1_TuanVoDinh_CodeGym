@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = EXPDateValidImpl.class)
-public @interface EXPDateValid {
-    String message() default "Please select a date that before from current date";
+@Constraint(validatedBy = FormatBeginDay.class)
+public @interface IFormatBeginDay {
+    String message() default "Please select a date that is from current date";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

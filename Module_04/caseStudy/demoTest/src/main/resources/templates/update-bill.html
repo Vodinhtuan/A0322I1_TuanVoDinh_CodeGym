@@ -26,7 +26,6 @@
                       th:action="@{'/bill/update/' + ${bill.billId}}"
                       th:object="${bill}" method="post">
                     <div class="row">
-
                         <div class="form-group col-md-8">
                             <label for="date" class="col-form-label">Publish Date</label>
                             <input type="date" class="form-control" id="date" th:field="*{publishDate}">
@@ -46,29 +45,29 @@
                             <input type="text" class="form-control" id="" th:field="*{description}">
                         </div>
 
-                        <div class="form-group col-md-8">
-                            <input th:value="1" value="1" type="radio" class="form-check-input" id="flexRadioDefault1"
-                                   name="product" th:field="*{product.productName}">
-                            <label class="form-check-label" for="flexRadioDefault1">Car</label>
+                        <div class="form-group col-md-8" th:each="p : ${products}">
+                            <input type="radio" class="form-check-input" id="flexRadioDefault1"
+                                   name="product" th:field="*{product}" th:value="${p.productId}">
+                            <label class="form-check-label" for="flexRadioDefault1" th:text="${p.productName}"></label>
                         </div>
 
-                        <div class="form-group col-md-8">
-                            <input th:value="2" value="2" type="radio" class="form-check-input" id="flexRadioDefault2"
-                                   name="product" th:field="*{product.productName}">
-                            <label class="form-check-label" for="flexRadioDefault2">Boat</label>
-                        </div>
+<!--                        <div class="form-group col-md-8">-->
+<!--                            <input value="2" type="radio" class="form-check-input" id="flexRadioDefault2"-->
+<!--                                   name="product" th:field="*{product.productId}">-->
+<!--                            <label class="form-check-label" for="flexRadioDefault2">Boat</label>-->
+<!--                        </div>-->
 
-                        <div class="form-group col-md-8">
-                            <input th:value="3" value="3" type="radio" class="form-check-input" id="flexRadioDefault3"
-                                   name="product" th:field="*{product.productName}">
-                            <label class="form-check-label" for="flexRadioDefault3">Helicopter</label>
-                        </div>
+<!--                        <div class="form-group col-md-8">-->
+<!--                            <input value="3" type="radio" class="form-check-input" id="flexRadioDefault3"-->
+<!--                                   name="product" th:field="*{product.productId}">-->
+<!--                            <label class="form-check-label" for="flexRadioDefault3">Helicopter</label>-->
+<!--                        </div>-->
 
                         <div class="form-group col-md-8">
                             <label class="col-form-label">Product Type</label>
-                            <select class="form-control" th:field="*{product}">
-                                <option th:each="t: ${productType}"
-                                        th:text="${t.typeProduct}" th:value="${t.id}">
+                            <select class="form-control" th:field="*{product.productType}">
+                                <option th:each="type: ${productType}"
+                                        th:text="${type.typeProduct}" th:value="${type.id}">
                                 </option>
                             </select>
                         </div>
